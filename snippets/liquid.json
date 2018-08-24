@@ -1,935 +1,48 @@
 {
-	// 	"Basic Liquid Tags"
-	"Liquid Context Variable": {
-		"prefix": "{{:var",
-		"body": "{{ ${1:Varibale} }}",
-		"description": "liquid Context Variable empty"
+	"terminal marketplace-kit install/update": {
+		"prefix": "?:marketplace-kit:1:install/update",
+		"body": "npm i -g @platform-os/marketplace-kit",
+		"description": "prefix 'sudo' If your node is installed globally"
 	},
-	"Liquid Tag": {
-		"prefix": "{%",
-		"body": "{%- $0 -%}",
-		"description": "liquid Tag empty"
+	"terminal marketplace-kit test": {
+		"prefix": "?:marketplace-kit:2:test",
+		"body": "marketplace-kit -V",
+		"description": "If the Marketplace Kit has been installed correctly, running this command displays the version of your Marketplace Kit. If the Marketplace Kit hasn't been installed, running this command gives a command not found error."
 	},
-	// 	"Extended Liquid Tags"
-	"Liquid Tag Comment": {
-		"prefix": "{%:comment",
-		"body": "{%- comment -%} $0 {%- endcomment -%}",
-		"description": "liquid Comment"
+	"terminal marketplace-kit initialize": {
+		"prefix": "?:arketplace-kit:3:initialize",
+		"body": "marketplace-kit init",
+		"description": "Create the required directory structure using the marketplace-kit."
 	},
-	"Liquid Tag Variable Assign": {
-		"prefix": "{%:assign",
-		"body": "{%- assign ${1:my_varibale} = $2 -%}",
-		"description": "liquid Assign variable"
+	"terminal marketplace-kit add environment": {
+		"prefix": "?:marketplace-kit:4:Enviroment",
+		"body": "marketplace-kit env add ${1:[environment] eg Staging,Production} --email ${2:[your email]} --url ${3:[https://yourMarketplaceURL.com]}",
+		"description": "To add your environment to a config file, run the env add command, and authenticate with your Partner Portal credentials"
 	},
-	"Liquid Tag Variable Capture": {
-		"prefix": "{%:capture",
-		"body": "{%- capture ${1:my_varibale} -%}$2{%- endcapture -%}",
-		"description": "liquid Capture variable"
+	"terminal marketplace-kit deploy": {
+		"prefix": "?:marketplace-kit:5:deploy",
+		"body": "marketplace-kit deploy ${0:[environment] eg Staging,Production}",
+		"description": "To deploy all changes, run the deploy command"
 	},
-	"Liquid Tag Variable Increment": {
-		"prefix": "{%:increment",
-		"body": "{%- increment $1 -%}",
-		"description": "liquid increment variable"
+	"terminal marketplace-kit deploy with force": {
+		"prefix": "?:marketplace-kit:deploy:5:force",
+		"body": "marketplace-kit deploy ${0:[environment] eg Staging,Production} -f",
+		"description": "To deploy and override everything, run the deploy -f command"
 	},
-	"Liquid Tag Variable Decrement": {
-		"prefix": "{%:decrement",
-		"body": "{%- decrement $1 -%}",
-		"description": "liquid decrement variable"
+	"terminal marketplace-kit sync": {
+		"prefix": "?:marketplace-kit:5:sync",
+		"body": "marketplace-kit sync ${0:[environment] eg Staging,Production}",
+		"description": "To immediately push changes in your codebase to the environment, run the sync command"
 	},
-	"Liquid Tag Control flow If": {
-		"prefix": "{%:if",
-		"body": [
-			"{%- if $1 ${2|==,!=,<,>,<=,>=,contains|} $3 -%}",
-			"\t$4",
-			"{%- endif -%}",
-		],
-		"description": "liquid If Logic"
-	},
-	"Liquid Tag Control flow Else": {
-		"prefix": "{%:else",
-		"body": "{%- else -%}",
-		"description": "liquid Else only"
-	},
-	"Liquid Tag Control flow Else If": {
-		"prefix": "{%:elsif",
-		"body": "{%- elsif $1 ${2|==,!=,<,>,<=,>=,contains|} $3 -%}",
-		"description": "liquid ElseIf only"
-	},
-	"Liquid Tag Control flow If Else": {
-		"prefix": "{%:if:else",
-		"body": [
-			"{%- if $1 ${2|==,!=,<,>,<=,>=,contains|} $3 -%}",
-			"\t$4",
-			"{%- else}",
-			"\t$5",
-			"{%- endif -%}",
-		],
-		"description": "liquid If | Else logic"
-	},
-	"Liquid Tag Control flow Case": {
-		"prefix": "{%:case",
-		"body": [
-			"{%- case ${1:handle} -%}",
-			"\t{% when $1 %}",
-			"\t\t$2",
-			"{%- endif -%}",
-		],
-		"description": "liquid Case/when logic"
-	},
-	"Liquid Tag Control flow When": {
-		"prefix": "{%:when",
-		"body": [
-			"{% when $1 %}",
-			"\t$2",
-		],
-		"description": "liquid Case/when logic"
-	},
-	"Liquid Tag Control flow Unless": {
-		"prefix": "{%:unless",
-		"body": [
-			"{%- unless $1 ${2|==,!=,<,>,<=,>=,contains|} $3 -%}",
-			"\t$3",
-			"{%- endunless -%}",
-		],
-		"description": "liquid Unless logic"
-	},
-	"Liquid Tag Iteration For": {
-		"prefix": "{%:for",
-		"body": [
-			"{%- for $1 in $2 -%}",
-			"\t$3",
-			"{%- endfor -%}",
-		],
-		"description": "liquid For Loop iteration"
-	},
-	"Liquid Tag Iteration Cycle": {
-		"prefix": "{%:cycle",
-		"body": "{%- cycle${1| , group|} ${2:Item 1}, ${0:Item 2} -%}",
-		"description": "liquid Cycle iteration"
-	},
-	"Liquid Tag Iteration Break": {
-		"prefix": "{%:break",
-		"body": "{%- break -%}",
-		"description": "liquid for loop break iteration"
-	},
-	"Liquid Tag Iteration Continue": {
-		"prefix": "{%:continue",
-		"body": "{%- continue -%}",
-		"description": "liquid for loop continue iteration"
-	},
-	"Liquid Tag Iteration Limit": {
-		"prefix": "{%:limit",
-		"body": "limit:$1",
-		"description": "liquid for loop limit iteration"
-	},
-	"Liquid Tag Iteration Offset": {
-		"prefix": "{%:offset",
-		"body": "offset:$1",
-		"description": "liquid for loop offset iteration"
-	},
-	"Liquid Tag Iteration Range": {
-		"prefix": "{%:range",
-		"body": "($1..$2)",
-		"description": "liquid for loop range iteration"
-	},
-	"Liquid Tag Iteration Reversed": {
-		"prefix": "{%:reversed",
-		"body": " reversed",
-		"description": "liquid for loop reversed iteration"
-	},
-	"Liquid Tag Iteration TableRow": {
-		"prefix": "{%:tablerow",
-		"body": [
-			"<table>",
-			"\t{%- tablerow $1 in $2 cols:$3 limit:$4 offset:$5 -%}",
-			"\t\t$0",
-			"\t{%- endtablerow -%}",
-			"</table>",
-		],
-		"description": "liquid tablerow iteration"
-	},
-	"Liquid Tag Iteration Columns": {
-		"prefix": "{%:cols",
-		"body": "cols:$0",
-		"description": "liquid tablerow column only"
-	},
-	"Liquid Tag Raw": {
-		"prefix": "{%:raw",
-		"body": "{%- raw -%}$1{%- endraw -%}",
-		"description": "liquid Raw"
+	"terminal marketplace-kit gui": {
+		"prefix": "?:marketplace-kit:6:gui",
+		"body": "marketplace-kit gui serve ${0:[environment] eg Staging,Production}",
+		"description": "To explore your instance database using graphql open http://localhost:3333/gui/graphql,\nTo list, edit and create resources open http://localhost:3333/gui/editor"
 	},
 
-	// Standard Liquid Variables
-	"Liquid Filter abs": {
-		"prefix": "|:abs",
-		"body": "| abs",
-		"description": "Liquid abs Returns the absolute value of a number"
-	},
-	"Liquid Filter append": {
-		"prefix": "|:append",
-		"body": "| append",
-		"description": "Liquid append Concatenates two strings and returns the concatenated value"
-	},
-	"Liquid Filter at_least": {
-		"prefix": "|:at_least",
-		"body": "| at_least",
-		"description": "Liquid at_least Limits a number to a minimum value"
-	},
-	"Liquid Filter capitalize": {
-		"prefix": "|:capitalize",
-		"body": "| capitalize",
-		"description": "Liquid capitilize Makes the first character of a string capitalized"
-	},
-	"Liquid Filter ceil": {
-		"prefix": "|:ceil",
-		"body": "| ceil",
-		"description": "Liquid ceil Rounds the input up to the nearest whole number. Liquid tries to convert the input to a number before the filter is applied"
-	},
-	"Liquid Filter compact": {
-		"prefix": "|:compact",
-		"body": "| compact",
-		"description": "Liquid compact returns (Array<Object>) - array from which blank values are removed"
-	},
-	"Liquid Filter concat": {
-		"prefix": "|:concat",
-		"body": "| concat: $1",
-		"description": "Liquid concat Concatenates (joins together) multiple arrays. The resulting array contains all the items from the input arrays"
-	},
-	"Liquid Filter date": {
-		"prefix": "|:date",
-		"body": "| date: \"${1:'eg. %a, %b %d, %y'}\"",
-		"description": "Liquid date Converts a timestamp into another date format"
-	},
-	"Liquid Filter date Now": {
-		"prefix": "|:date:now",
-		"body": "\"now\" | date: \"${1:'eg. %a, %b %d, %y'}\"",
-		"description": "Liquid date now Converts a timestamp into another date format"
-	},
-	"Liquid Filter date input": {
-		"prefix": "%:date:inputFormat",
-		"body": "2010-10-31 00:00:00 -0500",
-		"description": "Liquid date input format"
-	},
-	"Liquid Filter date Century": {
-		"prefix": "%:date:Century",
-		"body": "${0:%C,}",
-		"description": "Liquid date Century eg. 20 in 2019"
-	},
-	"Liquid Filter date Year without Century": {
-		"prefix": "%:date:Year:withoutCentury",
-		"body": "${0:%y,}",
-		"description": "Liquid date Year without century 19"
-	},
-	"Liquid Filter date Year with Century": {
-		"prefix": "%:date:Year:withCentury",
-		"body": "${0:%Y,}",
-		"description": "Liquid date Year with century 2019"
-	},
-	"Liquid Filter date Month 01..12": {
-		"prefix": "%:date:Month:01",
-		"body": "${0:%m,}",
-		"description": "Liquid date month 01..12"
-	},
-	"Liquid Filter date Month Jan": {
-		"prefix": "%:date:Month:Jan",
-		"body": "${0:%b,}",
-		"description": "Liquid date month Jan"
-	},
-	"Liquid Filter date Month January": {
-		"prefix": "%:date:Month:January",
-		"body": "${0:%B,}",
-		"description": "Liquid date month January"
-	},
-	"Liquid Filter date Week 01..53": {
-		"prefix": "%:date:Week:01-53",
-		"body": "${0:%V,}",
-		"description": "Liquid date week"
-	},
-	"Liquid Filter date Week 01..53 Monday": {
-		"prefix": "%:date:Week:00-53:Monday",
-		"body": "${0:%W,}",
-		"description": "Liquid date week Assuming Monday First 00..53"
-	},
-	"Liquid Filter date Week 01..53 Sunday": {
-		"prefix": "%:date:Week:00-53:Sunday",
-		"body": "${0:%U,}",
-		"description": "Liquid date week Assuming Sunday First 00..53"
-	},
-	"Liquid Filter date Day Mon": {
-		"prefix": "%:date:Day:Mon",
-		"body": "${0:%a,}",
-		"description": "Liquid date Day Mon"
-	},
-	"Liquid Filter date Day Monday": {
-		"prefix": "%:date:Day:Monday",
-		"body": "${0:%A,}",
-		"description": "Liquid date Day Monday"
-	},
-	"Liquid Filter date Day 01..31": {
-		"prefix": "%:date:Day:01-31",
-		"body": "${0:%d,}",
-		"description": "Liquid date Day 01..31"
-	},
-	"Liquid Filter date Day 1..31": {
-		"prefix": "%:date:Day:1-31",
-		"body": "${0:%e,}",
-		"description": "Liquid date Day 1..31"
-	},
-	"Liquid Filter date Day 1..6": {
-		"prefix": "%:date:Day:1-6",
-		"body": "${0:%w,}",
-		"description": "Liquid date Day 1..6"
 
-	},
-	"Liquid Filter date Day 001..366": {
-		"prefix": "%:date:Day:001-366",
-		"body": "${0:%j,}",
-		"description": "Liquid date Day 001..366"
-	},
-	"Liquid Filter date Day 1..7": {
-		"prefix": "%:date:Day:1-7",
-		"body": "${0:%u,}",
-		"description": "Liquid date Day 1..7"
-	},
-	"Liquid Filter date Full date %m/%d/%y": {
-		"prefix": "%:date:Date:Full",
-		"body": "${0:%D,}",
-		"description": "Liquid date Full Date %m/%d/%y"
-	},
-	"Liquid Filter date VMS %e-%b-%Y": {
-		"prefix": "%:date:Date:VMS",
-		"body": "${0:%v,}",
-		"description": "Liquid date VMS %e-%b-%Y"
-	},
-	"Liquid Filter date ISO 8601 %Y-%m-%d": {
-		"prefix": "%:date:Date:ISO",
-		"body": "${0:%F,}",
-		"description": "Liquid date VMS %Y-%m-%d"
-	},
-	"Liquid Filter date hour 00..23": {
-		"prefix": "%:date:Hour:00-23",
-		"body": "${0:%H,}",
-		"description": "Liquid date Hour 00..23"
-	},
-	"Liquid Filter date hour 01..12": {
-		"prefix": "%:date:Hour:01-12",
-		"body": "${0:%I,}",
-		"description": "Liquid date Hour 01..12"
-	},
-	"Liquid Filter date hour 0..23": {
-		"prefix": "%:date:Hour:0-23",
-		"body": "${0:%k,}",
-		"description": "Liquid date Hour 0..23"
-	},
-	"Liquid Filter date hour 0..12": {
-		"prefix": "%:date:Hour:0-12",
-		"body": "${0:%l,}",
-		"description": "Liquid date Hour 0..12"
-	},
-	"Liquid Filter date minute 00..59": {
-		"prefix": "%:date:Hour:00-59",
-		"body": "${0:%M,}",
-		"description": "Liquid date Minute 00..59"
-	},
-	"Liquid Filter date Second 00..60": {
-		"prefix": "%:date:Second:00-60",
-		"body": "${0:%S,}",
-		"description": "Liquid date Second 00..60"
-	},
-	"Liquid Filter date Seconds since 1970": {
-		"prefix": "%:date:Seconds:1970",
-		"body": "${0:%s,}",
-		"description": "Liquid date Seconds since 1970"
-	},
-	"Liquid Filter date Millisecond 000..999": {
-		"prefix": "%:date:Millisecond:000-999",
-		"body": "${0:%L,}",
-		"description": "Liquid date Millisecond 000..999"
-	},
-	"Liquid Filter date Millisecond 3 digit": {
-		"prefix": "%:date:Millisecond:3",
-		"body": "${0:%3,}",
-		"description": "Liquid date Millisecond 3 digit"
-	},
-	"Liquid Filter date Millisecond 6 digit": {
-		"prefix": "%:date:Millisecond:6",
-		"body": "${0:%6,}",
-		"description": "Liquid date Millisecond 6 digit"
-	},
-	"Liquid Filter date Nanosecond 9 digit": {
-		"prefix": "%:date:Nanosecond:9",
-		"body": "${0:%9,}",
-		"description": "Liquid date Nanosecond 9 digit"
-	},
-	"Liquid Filter date AM/PM": {
-		"prefix": "%:date:AM/PM:U",
-		"body": "${0:%p,}",
-		"description": "Liquid date AM/PM Uppercase"
-	},
-	"Liquid Filter date am/pm": {
-		"prefix": "%:date:am/pm:l",
-		"body": "${0:%P,}",
-		"description": "Liquid date am/pm lowercase"
-	},
-	"Liquid Filter date 12-hour %I:%M:%S %p": {
-		"prefix": "%:date:12-hour",
-		"body": "${0:%r,}",
-		"description": "Liquid date 12-hour %I:%M:%S %p"
-	},
-	"Liquid Filter date 24-hour %H:%M": {
-		"prefix": "%:date:24-hour:HM",
-		"body": "${0:%R,}",
-		"description": "Liquid date 24-hour %H:%M"
-	},
-	"Liquid Filter date 24-hour %H:%M:%S": {
-		"prefix": "%:date:24-hour:HMS",
-		"body": "${0:%T,}",
-		"description": "Liquid date 24-hour %H:%M:%S"
-	},
-	"Liquid Filter date Time zone - hour offset (e.g. +0900)": {
-		"prefix": "%:date:Time-zone:hour",
-		"body": "${0:%z,}",
-		"description": "Liquid date Time zone - hour offset (e.g. +0900)"
-	},
-	"Liquid Filter date Time zone - name": {
-		"prefix": "%:date:Time-zone:name",
-		"body": "${0:%Z,}",
-		"description": "Liquid date Time zone - name"
-	},
-	"Liquid Filter default": {
-		"prefix": "|:default",
-		"body": "| default: $0",
-		"description": "Liquid default Allows you to specify a fallback in case a value doesn’t exist. default will show its value if the left side is nil, false, or empty."
-	},
-	"Liquid Filter divided_by": {
-		"prefix": "|:divided_by",
-		"body": "| divided_by: ${0:Number}",
-		"description": "Liquid divided_by Divides a number by the specified number."
-	},
-	"Liquid Filter downcase": {
-		"prefix": "|:downcase",
-		"body": "| downcase",
-		"description": "Liquid downcase makes each character in a string lowercase. It has no effect on strings which are already all lowercase."
-	},
-	"Liquid Filter escape": {
-		"prefix": "|:escape",
-		"body": "| escape",
-		"description": "Liquid escape, escapes a string by replacing characters with escape sequences (so that the string can be used in a URL, for example). It doesn’t change strings that don’t have anything to escape."
-	},
-	"Liquid Filter escape_once": {
-		"prefix": "|:escape_once",
-		"body": "| escape_once",
-		"description": "Liquid escape_once, escapes a string without changing existing escaped entities. It doesn’t change strings that don’t have anything to escape."
-	},
-	"Liquid Filter first": {
-		"prefix": "|:first",
-		"body": ".first",
-		"description": "Liquid first, returns the first item of an array."
-	},
-	"Liquid Filter floor": {
-		"prefix": "|:floor",
-		"body": "| floor",
-		"description": "Liquid floor, rounds a number down to the nearest whole number. Liquid tries to convert the input to a number before the filter is applied."
-	},
-	"Liquid Filter join": {
-		"prefix": "|:join",
-		"body": "| join: \"${0:String}\"",
-		"description": "Liquid join, combines the items in an array into a single string using the argument as a separator."
-	},
-	"Liquid Filter last": {
-		"prefix": "|:last",
-		"body": ".last",
-		"description": "Liquid last, returns the last item of an array."
-	},
-	"Liquid Filter lstrip": {
-		"prefix": "|:lstrip",
-		"body": "| lstrip",
-		"description": "Liquid lstrip, Removes all whitespaces (tabs, spaces, and newlines) from the beginning of a string. The filter does not affect spaces between words."
-	},
-	"Liquid Filter minus": {
-		"prefix": "|:minus",
-		"body": "| minus: ${0:Number}",
-		"description": "Liquid minus, subtracts a number from another number."
-	},
-	"Liquid Filter modulo": {
-		"prefix": "|:modulo",
-		"body": "| modulo: ${0:Number}",
-		"description": "Liquid modulo, returns the remainder of a division operation."
-	},
-	"Liquid Filter newline_to_br": {
-		"prefix": "|:newline_to_br",
-		"body": "| newline_to_br",
-		"description": "Liquid newline_to_br, replaces every newline (\n) with an HTML line break (<br>)."
-	},
-	"Liquid Filter plus": {
-		"prefix": "|:plus",
-		"body": "| plus: ${0:Number}",
-		"description": "Liquid plus, adds a number to another number."
-	},
-	"Liquid Filter prepend": {
-		"prefix": "|:prepend",
-		"body": "| prepend: {0:String or Variable}",
-		"description": "Liquid prepend, adds the specified string to the beginning of another string."
-	},
-	"Liquid Filter remove": {
-		"prefix": "|:remove",
-		"body": "| remove: \"{0:String}\"",
-		"description": "Liquid remove, removes every occurrence of the specified substring from a string."
-	},
-	"Liquid Filter remove_first": {
-		"prefix": "|:remove_first",
-		"body": "| remove_first: \"{0:String}\"",
-		"description": "Liquid remove, removes only the first occurrence of the specified substring from a string."
-	},
-	"Liquid Filter replace": {
-		"prefix": "|:replace",
-		"body": "| replace: \"{1:String}\", \"{2:String}\"",
-		"description": "Liquid remove, replaces every occurrence of an argument in a string with the second argument."
-	},
-	"Liquid Filter replace_first": {
-		"prefix": "|:replace_first",
-		"body": "| replace_first: \"{1:String}\", \"{2:String}\"",
-		"description": "Liquid remove, replaces only the first occurrence of an argument in a string with the second argument."
-	},
-	"Liquid Filter reverse": {
-		"prefix": "|:reverse",
-		"body": "| reverse",
-		"description": "Liquid reverse, reverses the order of the items in an array. reverse cannot reverse a string. Reverse cannot be used directly on a string."
-	},
-	"Liquid Filter round": {
-		"prefix": "|:round",
-		"body": "| round",
-		"description": "Liquid round, rounds an input number to the nearest integer or, if a number is specified as an argument, to that number of decimal places."
-	},
-	"Liquid Filter rstrip": {
-		"prefix": "|:rstrip",
-		"body": "| rstrip",
-		"description": "Liquid rstrip, removes all whitespaces (tabs, spaces, and newlines) from the right side of a string."
-	},
-	"Liquid Filter size": {
-		"prefix": "|:size",
-		"body": "| size",
-		"description": "Liquid size, returns the number of characters in a string or the number of items in an array. size can also be used with dot notation (for example, {{ my_string.size }}). This allows you to use size inside tags such as conditionals."
-	},
-	"Liquid Filter slice": {
-		"prefix": "|:slice",
-		"body": "| slice: {1:+-Number}, {0:Number}",
-		"description": "Liquid slice, returns a substring of 1 character beginning at the index specified by the argument passed in. An optional second argument specifies the length of the substring to be returned. String indices are numbered starting from 0. If the first parameter is a negative number, the indices are counted from the end of the string"
-	},
-	"Liquid Filter sort": {
-		"prefix": "|:sort",
-		"body": "| sort",
-		"description": "Liquid sort, sorts items in an array by a property of an item in the array. The order of the sorted array is case-sensitive."
-	},
-	"Liquid Filter sort_natural": {
-		"prefix": "|:sort_natural",
-		"body": "| sort_natural",
-		"description": "Liquid sort, sorts items in an array by a property of an item in the array."
-	},
-	"Liquid Filter split": {
-		"prefix": "|:split",
-		"body": "| split:  \"{0:String}\"",
-		"description": "Liquid split, divides an input string into an array using the argument as a separator. split is commonly used to convert comma-separated items from a string to an array."
-	},
-	"Liquid Filter strip": {
-		"prefix": "|:strip",
-		"body": "| strip",
-		"description": "Liquid strip, removes all whitespace (tabs, spaces, and newlines) from both the left and right side of a string. It does not affect spaces between words."
-	},
-	"Liquid Filter strip_html": {
-		"prefix": "|:strip_html",
-		"body": "| strip_html",
-		"description": "Liquid strip, removes any HTML tags from a string."
-	},
-	"Liquid Filter strip_newlines": {
-		"prefix": "|:strip_newlines",
-		"body": "| strip_newlines",
-		"description": "Liquid strip_newlines, removes any newline characters (line breaks) from a string."
-	},
-	"Liquid Filter times": {
-		"prefix": "|:times",
-		"body": "| times: {0:Number}",
-		"description": "Liquid times, multiplies a number by another number."
-	},
-	"Liquid Filter truncate": {
-		"prefix": "|:truncate",
-		"body": "| truncate: {1:Number}, \"$(0:Custom/No Ellipsis)\"",
-		"description": "Liquid truncate, truncate shortens a string down to the number of characters passed as a parameter. Default ellipsis..."
-	},
-	"Liquid Filter truncatewords": {
-		"prefix": "|:truncatewords",
-		"body": "| truncatewords: {1:Number}, \"$(0:Custom/No Ellipsis)\"",
-		"description": "Liquid truncatewords, shortens a string down to the number of words passed as the argument. Default ellipsis..."
-	},
-	"Liquid Filter uniq": {
-		"prefix": "|:uniq",
-		"body": "| uniq",
-		"description": "Liquid uniq, removes any duplicate elements in an array."
-	},
-
-	// pOS Liquid FIlters
-
-	"Liquid Filter add_to_array": {
-		"prefix": "|:add_to_array",
-		"body": "| add_to_array: ${0:object}",
-		"description": "Liquid add_to_array, returns array to which we add the item given as the second parameter"
-	},
-	"Liquid Filter add_to_date": {
-		"prefix": "|:add_to_date",
-		"body": "| add_to_date: ${0:number_of_days integer}",
-		"description": "Liquid add_to_date, returns input date/time to which the number_of_days days have been added; use negative values to obtain a date in the past."
-	},
-	"Liquid Filter advanced_format": {
-		"prefix": "|:advanced_format",
-		"body": "| advanced_format: ${0:%[flags][width][.precision]type}",
-		"description": "Liquid add_to_date, returns (string) formatted string. %[flags][width][.precision]type. More examples and information could be taken from: https://ruby-doc.org/core-2.5.1/Kernel.html#method-i-sprintf."
-	},
-	"Liquid Filter any": {
-		"prefix": "|:any",
-		"body": "| any: ${0:String/Number}",
-		"description": "Liquid add_to_date, returns (Boolean) - checks if given array contains at least one queried string/number."
-	},
-	"Liquid Filter asset_url": {
-		"prefix": "|:asset_url",
-		"body": "| asset_url",
-		"description": "Liquid asset_url - returns (String) - url to the physical file if existing, root asset url otherwise"
-	},
-	"Liquid Filter compute_hmac": {
-		"prefix": "|:compute_hmac",
-		"body": "| compute_hmac: ${0:String - data, secret ,algorithm}",
-		"description": "Liquid compute_hmac - returns (String) - Keyed-hash message authentication code (HMAC), that can be used to authenticate requests from third party apps, for ex. Stripe webhooks requests"
-	},
-	"Liquid Filter detect": {
-		"prefix": "|:detect",
-		"body": "| detect: ${0:Hash eg field_name: value}",
-		"description": "Liquid detect - returns (Object) - with first object from collection that matches provided conditions."
-	},
-	"Liquid Filter escape_javascript": {
-		"prefix": "|:escape_javascript",
-		"body": "| escape_javascript",
-		"description": "Liquid escape_javascript - returns (String) - with escaped javascript."
-	},
-	"Liquid Filter expand_url_template": {
-		"prefix": "|:expand_url_template",
-		"body": "| expand_url_template: ${0:Hash eg field_name: \"value\"}",
-		"description": "Liquid expand_url_template - returns (String) - url"
-	},
-	"Liquid Filter extract_url_params": {
-		"prefix": "|:extract_url_params",
-		"body": "| extract_url_params: ${0:String Array<string> eg \"/search/{city}/{street}\"}",
-		"description": "Liquid extract_url_params - returns (Hash) - params"
-	},
-	"Liquid Filter fetch": {
-		"prefix": "|:fetch",
-		"body": "| fetch: ${0:Key(String)}",
-		"description": "Liquid fetch - returns (Object) - {{ users | first | fetch: \"name\"}} => \"Jane\""
-	},
-	"Liquid Filter flatten": {
-		"prefix": "|:flatten",
-		"body": "| flatten: ${0:(Array<Array>)}",
-		"description": "Liquid flatten - returns (Array<Object>) - with objects"
-	},
-	"Liquid Filter group_by": {
-		"prefix": "|:group_by",
-		"body": "| group_by: ${0:method_name (String)}",
-		"description": "Liquid group_by - returns (Hash<MethodResult => Array<Object>>) - the original array grouped by method specified by the second parameter"
-	},
-	"Liquid Filter html_safe": {
-		"prefix": "|:html_safe",
-		"body": "| html_safe: ${0:text (String)}",
-		"description": "Liquid html_safe - returns (String) - returns string that can be rendered with all html tags by default all variables are striped from danger html tags"
-	},
-	"Liquid Filter humanize": {
-		"prefix": "|:humanize",
-		"body": "| humanize",
-		"description": "Liquid humanize - returns (String) - a human readable string derived from the input; capitalizes the first word, turns underscores into spaces, and strips a trailing '_id' if present. Meant for creating pretty output."
-	},
-	"Liquid Filter in_groups_of": {
-		"prefix": "|:in_groups_of",
-		"body": "| in_groups_of: ${0:integer}",
-		"description": "Liquid in_groups_of - returns (Array<Array<Object>>) - the original array split into groups having the size specified by the second parameter (an array of arrays)"
-	},
-	"Liquid Filter intersection": {
-		"prefix": "|:intersection",
-		"body": "| intersection: ${0:other_array (Array<Object>)}",
-		"description": "Liquid intersection - returns (Array<Object>) - that exists in both arrays"
-	},
-	"Liquid Filter is_date_before": {
-		"prefix": "|:is_date_before",
-		"body": "| is_date_before: ${0:second_date (DateTime)}",
-		"description": "Liquid is_date_before - returns (Boolean) - returns true if first date is lower than second date."
-	},
-	"Liquid Filter is_date_in_past": {
-		"prefix": "|:is_date_in_past",
-		"body": "| is_date_in_past",
-		"description": "Liquid is_date_in_past - returns (Boolean) - true if date passed is in the past, false otherwise."
-	},
-	"Liquid Filter is_included_in_array": {
-		"prefix": "|:is_included_in_array",
-		"body": "| is_included_in_array: ${0:el (object)}",
-		"description": "Liquid is_included_in_array - returns (Boolean) - whether the array includes the element given."
-	},
-	"Liquid Filter is_token_valid": {
-		"prefix": "|:is_token_valid",
-		"body": "| is_token_valid: ${0:user_id (Integer)}",
-		"description": "Liquid is_token_valid - returns (Boolean) - returns true if the token has not expired and was generated for given user."
-	},
-	"Liquid Filter json": {
-		"prefix": "|:json",
-		"body": "| json",
-		"description": "Liquid json - returns object (Object) - object we want a JSON representation of"
-	},
-	"Liquid Filter limit": {
-		"prefix": "|:limit",
-		"body": "| limit: ${0:user_id (Integer)",
-		"description": "Liquid limit - returns (Array<Object>) - parameter; [1,2,3,4] limited to 2 elements gives [1,2]"
-	},
-	"Liquid Filter localize": {
-		"prefix": "|:localize",
-		"body": "| localize: ${0:format (String)",
-		"description": "Liquid localize - returns (String, nil) - formatted representation of the passed in DateTime object"
-	},
-	"Liquid Filter map": {
-		"prefix": "|:map",
-		"body": "| map: ${0:method (String)}",
-		"description": "Liquid map - returns (Array<Object>) - array of objects obtained from the original array of objects (passed in as the object parameter) by calling the method 'method' on each object in the original array"
-	},
-	"Liquid Filter map_attributes": {
-		"prefix": "|:map_attributes",
-		"body": "| map_attributes: ${0:attributes (Array<String>)}",
-		"description": "Liquid map_attributes - returns (Array<Array>) - array of arrays with values for given keys"
-	},
-	"Liquid Filter markdownify": {
-		"prefix": "|:markdownify",
-		"body": "| markdownify",
-		"description": "Liquid markdownify - returns (String) - processed text with markdown syntax changed to HTML"
-	},
-	"Liquid Filter matches": {
-		"prefix": "|:matches",
-		"body": "| matches: ${0:regexp (String)}",
-		"description": "Liquid matches - returns (Boolean) - whether the given string matches the given regular expression"
-	},
-	"Liquid Filter new_line_to_br": {
-		"prefix": "|:new_line_to_br",
-		"body": "| new_line_to_br",
-		"description": "Liquid new_line_to_br - returns (String) - replaces newlines in the input string with the HTML tag"
-	},
-	"Liquid Filter pad_left": {
-		"prefix": "|:pad_left",
-		"body": "| pad_left: ${0:count (Integer) | symbol(String)}",
-		"description": "Liquid pad_left - returns (String) - returns string padded from left to length of count with symbol character"
-	},
-	"Liquid Filter parameterize": {
-		"prefix": "|:parameterize",
-		"body": "| parameterize: ${0:separator (String) default '-'}",
-		"description": "Liquid parameterize - returns (String) - replaces special characters in a string so that it may be used as part of a 'pretty' URL; the default separator used is '-';"
-	},
-	"Liquid Filter pluralize": {
-		"prefix": "|:pluralize",
-		"body": "| pluralize: ${0:count (Number) default '2'}",
-		"description": "Liquid pluralize - returns (String) - pluralized version of the input string"
-	},
-	"Liquid Filter pricify": {
-		"prefix": "|:pricify",
-		"body": "| pricify: ${0:currency (String) default 'USD'}",
-		"description": "Liquid pricify - returns (String) - formatted price using the global price formatting rules"
-	},
-	"Liquid Filter pricify_cents": {
-		"prefix": "|:pricify_cents",
-		"body": "| pricify_cents: ${0:currency (String) default 'USD'}",
-		"description": "Liquid pricify_cents - returns (String) - formatted price using the global price formatting rule"
-	},
-	"Liquid Filter querify": {
-		"prefix": "|:querify",
-		"body": "| querify",
-		"description": "Liquid querify - returns (String) - a query string"
-	},
-	"Liquid Filter random_string": {
-		"prefix": "|:random_string",
-		"body": "| random_string",
-		"description": "Liquid random_string - returns (String) - returns a random alphanumeric string of given length;"
-	},
-	"Liquid Filter raw_escape_string": {
-		"prefix": "|:raw_escape_string",
-		"body": "| raw_escape_string",
-		"description": "Liquid raw_escape_string - returns (String) - input string HTML-escaped; this will return a string whose HTML tags will be visible in the browser"
-	},
-	"Liquid Filter regex_matches": {
-		"prefix": "|:regex_matches",
-		"body": "| regex_matches: ${0:regexp (String)}",
-		"description": "Liquid regex_matches - returns (Array<Array<String>>) - matches for the expression in the string; each item in the array is an array containing all groups matches; for example for the regex (.)(.) and the text 'abcdef', the result will look like: [[\"a\", \"b\"], [\"c\", \"d\"], [\"e\", \"f\"]]"
-	},
-	"Liquid Filter reject": {
-		"prefix": "|:reject",
-		"body": "| reject: ${0:conditions (Hash) eg field_name: value}",
-		"description": "Liquid reject - returns (Array<Object>) - with objects from collection that don't match provided conditions"
-	},
-	"Liquid Filter rotate": {
-		"prefix": "|:rotate",
-		"body": "| rotate: ${0:count (Integer) default 1}",
-		"description": "Liquid rotate - returns (Array<Object>) - with objects from collection that don't match provided conditions"
-	},
-	"Liquid Filter select": {
-		"prefix": "|:select",
-		"body": "| select: ${0:conditions (Hash) eg field_name: value}",
-		"description": "Liquid select - returns (Array<Object>) - with objects from collection that matches provided conditions"
-	},
-	"Liquid Filter sha1": {
-		"prefix": "|:sha1",
-		"body": "| sha1",
-		"description": "Liquid sha1 - returns (String) - SHA1 digest of the input object"
-	},
-	"Liquid Filter slugify": {
-		"prefix": "|:slugify",
-		"body": "| slugify",
-		"description": "Liquid slugify - returns (String) - replaces special characters in a string so that it may be used as part of a 'pretty' URL;"
-	},
-	"Liquid Filter strftime": {
-		"prefix": "|:strftime",
-		"body": "| strftime: ${0:eg'%Y-%m-%d %H:%M'}",
-		"description": "Liquid strftime - returns (String) - formatted representation of the date object; the formatted representation will be based on what the format parameter specifies"
-	},
-	"Liquid Filter subtract_array": {
-		"prefix": "|:subtract_array",
-		"body": "| subtract_array: ${0: other_array (Array<Object>)}",
-		"description": "Liquid subtract_array - returns (Array<Object>) - that is a difference between two arrays"
-	},
-	"Liquid Filter sum_array": {
-		"prefix": "|:sum_array",
-		"body": "| sum_array",
-		"description": "Liquid sum_array - returns (Numeric) - summarised value of array"
-	},
-	"Liquid Filter titleize": {
-		"prefix": "|:titleize",
-		"body": "| titleize",
-		"description": "Liquid titleize - returns (String) - capitalizes all the words and replaces some characters in the string to create a nicer looking title; it is meant for creating pretty output"
-	},
-	"Liquid Filter to_date": {
-		"prefix": "|:to_date",
-		"body": "| to_date",
-		"description": "Liquid to_date - returns (Date) - a Date object obtained/parsed from the input object"
-	},
-	"Liquid Filter to_hash": {
-		"prefix": "|:to_hash",
-		"body": "| to_hash",
-		"description": "Liquid to_hash - returns (Hash) - Hash created based on JSON"
-	},
-	"Liquid Filter to_mobile_number": {
-		"prefix": "|:to_mobile_number",
-		"body": "| to_mobile_number: ${0:country (String)}",
-		"description": "Liquid to_mobile_number - returns (String) - returns mobile number in E.164 format; recommended for sending sms notifications"
-	},
-	"Liquid Filter to_positive_integer": {
-		"prefix": "|:to_positive_integer",
-		"body": "| to_positive_integer: ${0:default (Integer)}",
-		"description": "Liquid to_positive_integer - returns (Integer)"
-	},
-	"Liquid Filter to_time": {
-		"prefix": "|:to_time",
-		"body": "| to_time: ${0:time (String, Integer)}",
-		"description": "Liquid to_time - returns (DateTime) - a time object created from parsing the string representation of time given as input"
-	},
-	"Liquid Filter translate": {
-		"prefix": "|:translate",
-		"body": "| translate: ${0:options Hash {String => String}}",
-		"description": "Liquid translate - returns (String) - translation value taken from translations yml file for the key given as parameter"
-	},
-	"Liquid Filter url_for_path_with_token": {
-		"prefix": "|:url_for_path_with_token",
-		"body": "| url_for_path_with_token: current_user",
-		"description": "Liquid url_for_path_with_token - returns (String) - returns a url for the given page slug, which includes user temporary token;"
-	},
-	"Liquid Filter video_params": {
-		"prefix": "|:video_params",
-		"body": "| video_params",
-		"description": "Liquid video_params - returns (Hash) - metadata about video"
-	},
-	"Liquid Filter videoify": {
-		"prefix": "|:videoify",
-		"body": "| videoify",
-		"description": "Liquid videoify - returns (String) - if the given url is supported, an HTML formatted string containing a video player (inside an iframe) which will play the video at the given url; otherwise an empty string is returned"
-	},
-
-	// pOS Liquid Variables
-	"pOS Liquid Variable Layout": {
-		"prefix": "{{:layout",
-		"body": "{{- content_for_layout -}}",
-		"description": "Liquid Adds specified content to Layout"
-	},
-	"Liquid Filter asset_url Access": {
-		"prefix": "{{:asset_url",
-		"body": "{{- '${1:path/file.ext}' | asset_url -}}",
-		"description": "Liquid Accessing Assets - returns (String) - url to the physical file if existing, root asset url otherwise"
-	},
-	"pOS Liquid Variable Assets Check": {
-		"prefix": "{{:asset_url:list",
-		"body": "{{- asset_url -}}",
-		"description": "Liquid Use {{ asset_url }} variable to check your assets. This will list the full URL of your assets on our content delivery network, including the time of the latest update (used for caching)."
-	},
-	"Liquid variable random_string": {
-		"prefix": "{{:random_string",
-		"body": "{{- ${0:length (Int) default '12' | random_string -}}",
-		"description": "Liquid random_string - returns (String) - returns a random alphanumeric string of given length;"
-	},
-	// pOS Liquid Tags
-	"pOS Liquid Tag Page content_for": {
-		"prefix": "{%:content_for",
-		"body": "{%- content_for '${1:Yield}' -%}$2{% endcontent_for %}",
-		"description": "Liquid Adds specified content to Layout"
-	},
-	"pOS Liquid Tag execute_query": {
-		"prefix": "{%:execute_query",
-		"body": "{%- execute_query \"${1:query_name}\", result_name: \"${2:default g}\" -%}",
-		"description": "Liquid Use to execute defined graph query. Will raise an exception when query return errors."
-	},
-	"pOS Liquid Tag Form": {
-		"prefix": "{%:form",
-		"body": [
-			"{%- form html-id: '${1:someid}', html-novalidate: true, html-class: '${2:class}', html-data-user-id: '${3:someid}', html-multipart: false -%}",
-			"\t{{ form_builder }}",
-			"{%- endform -%}",
-		],
-		"description": "Liquid used to generate a html form element for a resource. Use within form configuration. Inside the tag you can use form_builder variable."
-	},
-	"pOS Liquid Include": {
-		"prefix": "{%:include",
-		"body": "{%- include $1 -%}",
-		"description": "liquid Include"
-	},
-	"pOS Liquid Include Form": {
-		"prefix": "{%:include_form",
-		"body": "{%- include_form '${1:form_config Name}', resource_id: ${2:Resource id eg user.id}, parent_resource_id: '${3:Resource type eg custom_model_type}' -%}",
-		"description": "liquid Include_form This tag should be used to render forms defined in marketplace_builder/form_configurations."
-	},
-	"pOS Liquid log": {
-		"prefix": "{%:log",
-		"body": "{%- log ${1:any object to be printed}, type: '${2|error,info,debug|' -%}",
-		"description": "liquid log Print any information to marketplace logs"
-	},
-	"pOS Liquid query_graph": {
-		"prefix": "{%:query_graph",
-		"body": "{%- query_graph \"${1:query_name}\", result_name: \"${2:default g}\" -%}",
-		"description": "liquid log Print any information to marketplace logs"
-	},
-	"pOS Liquid spam_protection": {
-		"prefix": "{%:spam_protection",
-		"body": "{%- spam_protection -%}",
-		"description": "liquid spam_protection Generates html for recaptcha spam protection"
-	},
-	"pOS Liquid Tag layout yeild": {
-		"prefix": "{%:yeild",
-		"body": "{%- yield '${0:Content_for name}' -%}",
-		"description": "Liquid yeild Execute code wrapped inside content_for {% content_for 'content_for_name' %}"
-	},	
-
-	// 	"Liquid Console.log"
-	"Form Builder console.log": {
-		"prefix": "clog:form_builder",
-		"body": "<script>console.log {{- form_builder | json -}};</script>",
-		"description": "Liquid FormBuilder Console.log"
-	},
-	// Yaml Settings
-	"Yaml Page Settings": {
+	
+	"Yaml Page Preferences": {
 		"prefix": "---:view:page",
 		"body": [
 			"---",
@@ -946,7 +59,7 @@
 			"redirect_to: ${11:PageURL}",
 			"response_headers: ${12:JSON-Overide most http headers}",
 			"searchable: ${13:Searchable by gQL default false}",
-			"---",
+			"---"
 		],
 		"description": "Yaml Page settings"
 	},
@@ -955,17 +68,17 @@
 		"body": [
 			"title: ${1:Title}",
 			"description: ${2:Description}",
-			"tags: [\"${3:tag1}\",]",
+			"tags: [\"${3:tag1}\",]"
 		],
 		"description": "Yaml Page Metadata"
-	}	,
+	},
 	"Yaml Page Response Headers": {
 		"prefix": "---:headers",
 		"body": [
 			"{",
 			"\t\"Content-Type\": \"${1:text/xml},\"",
 			"\t\"${2:Some-Header}\": \"${3:Value}\"",
-			"}",
+			"}"
 		],
 		"description": "Yaml Page Response Header overide. Restricted headers: cache-control, etag, set-cookie, x-request-id, x-xss-protection"
 	},
@@ -977,7 +90,7 @@
 			"custom_attributes:",
 			"-\t${2:name}: {3:value}",
 			"\t${4:name}: {5:value}",
-			"---",
+			"---"
 		],
 		"description": "Yaml Page settings"
 	},
@@ -1005,7 +118,7 @@
 			"-\t${14:name ie ??}",
 			"transactable_types:",
 			"-\t${15:name ie transactable_types}",
-			"---",
+			"---"
 		],
 		"description": "Full list of custon_model_types attributes"
 	},
@@ -1027,7 +140,7 @@
 			"\t\t\theight: ${10:px (integer)}",
 			"-\tname: {11:value}",
 			"\tattribute_type: ${12|--custom attachement--,file|}",
-			"---",
+			"---"
 		],
 		"description": "Full list of transactable_types attributes"
 	},
@@ -1049,7 +162,7 @@
 			"\t\t\theight: ${10:px (integer)}",
 			"-\tname: {11:value}",
 			"\tattribute_type: ${12|--custom attachement--,file|}",
-			"---",
+			"---"
 		],
 		"description": "Full list of order_types attributes"
 	},
@@ -1068,7 +181,7 @@
 			"bcc: ${9:email}",
 			"subject: $10",
 			"layout_path: ${11:???}",
-			"---",
+			"---"
 		],
 		"description": "Full list of email notifcation attributes"
 	},
@@ -1081,7 +194,7 @@
 			"delay: {3:Integer}",
 			"enabled: ${4:alert (Boolean) default true}",
 			"trigger_condition: {5:Liquid condition default true}",
-			"---",
+			"---"
 		],
 		"description": "Full list of SMS notifcation attributes"
 	},
@@ -1098,7 +211,7 @@
 			"headers: '{",
 			"\t\"Content-Type\": \"${8|application/json,text/html|}\"",
 			"}'",
-			"---",
+			"---"
 		],
 		"description": "Full list of API notifcation attributes"
 	},
@@ -1109,7 +222,7 @@
 			"name: ${1:snake_case}",
 			"redirect_to: {2: URL eg /unauthorized}",
 			"flash_alert: ${3:text}",
-			"---",
+			"---"
 		],
 		"description": "Full list of authorization_policies attributes"
 	},
@@ -1132,7 +245,7 @@
 			"resource_owner: ${13|self,anyone|}",
 			"sms_notifications: $14",
 			"spam_protection: $15",
-			"---",
+			"---"
 		],
 		"description": "Full list of form_configurations attributes"
 	},
@@ -1142,10 +255,10 @@
 			"default_payload: |-",
 			"${1:liquid if any}",
 			"\t{",
-				"\t\t\"properties_attributes\": {",
-					"\t\t\t\"${2:some_custom_property}\": \"${3:Value}\"",
-				"\t\t}",
-			"\t}",
+			"\t\t\"properties_attributes\": {",
+			"\t\t\t\"${2:some_custom_property}\": \"${3:Value}\"",
+			"\t\t}",
+			"\t}"
 		],
 		"description": "form_configurations default payload attribute"
 	},
@@ -1159,25 +272,25 @@
 			"\t\tallow_nil",
 			"\t\tallow_blank",
 			"\tunique:",
-          		"\t\tscope:",
-            		"\t\t\t- other_property",
-		  		"\t\tmessage: ${6:eg Must be uniq}",
+			"\t\tscope:",
+			"\t\t\t- other_property",
+			"\t\tmessage: ${6:eg Must be uniq}",
 			"\tconfirmation: ${7|true|}",
 			"\tinclusion:",
-          		"\t\tin: ${8|true,false|}",
-				"\t\tmessage: ${9:eg disclosure is required}",
+			"\t\tin: ${8|true,false|}",
+			"\t\tmessage: ${9:eg disclosure is required}",
 			"\tformat:",
-          		"\t\twith: ${10:eg !ruby/regexp /\\A[+]?[\\d \\-()]+\\z/}",
-				"\t\tallow_blank: ${11|true|}",
-				"\t\tmessage: ${12:eg This seems to be an invalid phone number.}",
+			"\t\twith: ${10:eg !ruby/regexp /\\A[+]?[\\d \\-()]+\\z/}",
+			"\t\tallow_blank: ${11|true|}",
+			"\t\tmessage: ${12:eg This seems to be an invalid phone number.}",
 			"\tfile_content_type:",
-				"\t\tallow:",
-				"\t\t${13|- image/jpeg,- image/png,- application/pdf,- application/msword,- application/vnd.ms-excel|}",
+			"\t\tallow:",
+			"\t\t${13|- image/jpeg,- image/png,- application/pdf,- application/msword,- application/vnd.ms-excel|}",
 			"\tlength:",
-				"\t\t${14|is,within,maximum,minimum|}: ${15:integer/within=range}",
-				"\t\tmessage: ${16:eg You need to include Front side and Back side Photo ID}",
+			"\t\t${14|is,within,maximum,minimum|}: ${15:integer/within=range}",
+			"\t\tmessage: ${16:eg You need to include Front side and Back side Photo ID}",
 			"\tnumericality:",
-				"\t\t${17|only_integer,greater_than,greater_than_or_equal_to,equal_to,less_than,less_than_or_equal_to,other_than,odd,even|}: ${15:integer}",
+			"\t\t${17|only_integer,greater_than,greater_than_or_equal_to,equal_to,less_than,less_than_or_equal_to,other_than,odd,even|}: ${15:integer}"
 		],
 		"description": "form_configurations validation attribute"
 	},
@@ -1185,7 +298,7 @@
 		"prefix": "---:translations",
 		"body": [
 			"${1:Country Code}:",
-			"\t${1:(hash) eg greeting: hello world}:",	
+			"\t${1:(hash) eg greeting: hello world}:"
 		],
 		"description": "Translations"
 	},
@@ -1198,108 +311,981 @@
 			"# The values :model, :attribute and :value are always available for interpolation",
 			"# The value :count is available when applicable. Can be used for pluralization.",
 			"\tmessages:",
-			  "\t\tmodel_invalid: ${2:\"Validation failed: %{errors}\"}",
-			  "\t\tinclusion: ${3:\"is not included in the list\"}",
-			  "\t\texclusion: ${4:\"is reserved\"}",
-			  "\t\tinvalid: ${5:\"is invalid\"}",
-			  "\t\tconfirmation: ${6:\"doesn't match %{attribute}\"}",
-			  "\t\taccepted: ${7:\"must be accepted\"}",
-			  "\t\tempty: ${8:\"can't be empty\"}",
-			  "\t\tblank: ${9:\"can't be blank\"}",
-			  "\t\tpresent: ${10:\"must be blank\"}",
-			  "\t\ttoo_long:",
-			  	"\t\t\tone: ${11:\"is too long (maximum is 1 character)\"}",
-				"\t\t\tother: ${12:\"is too long (maximum is %{count} characters)\"}",
-			  "\t\ttoo_short:",
-				"\t\t\tone: ${13:\"is too short (minimum is 1 character)\"}",
-				"\t\t\tother: ${14:\"is too short (minimum is %{count} characters)\"}",
-			  "\t\twrong_length:",
-				"\t\t\tone: ${15:\"is the wrong length (should be 1 character)\"}",
-				"\t\t\tother: ${16:\"is the wrong length (should be %{count} characters)\"}",
-			  "\t\tnot_a_number: ${17:\"is not a number\"}",
-			  "\t\tnot_an_integer: ${18:\"must be an integer\"}",
-			  "\t\tgreater_than: ${19:\"must be greater than %{count}\"}",
-			  "\t\tgreater_than_or_equal_to: ${20:\"must be greater than or equal to %{count}\"}",
-			  "\t\tequal_to: ${21:\"must be equal to %{count}\"}",
-			  "\t\tless_than: ${22:\"must be less than %{count}\"}",
-			  "\t\tless_than_or_equal_to: ${23:\"must be less than or equal to %{count}\"}",
-			  "\t\tother_than: ${24:\"must be other than %{count}\"}",
-			  "\t\todd: ${25:\"must be odd\"}",
-			  "\t\teven: ${26:\"must be even\"}",
+			"\t\tmodel_invalid: ${2:\"Validation failed: %{errors}\"}",
+			"\t\tinclusion: ${3:\"is not included in the list\"}",
+			"\t\texclusion: ${4:\"is reserved\"}",
+			"\t\tinvalid: ${5:\"is invalid\"}",
+			"\t\tconfirmation: ${6:\"doesn't match %{attribute}\"}",
+			"\t\taccepted: ${7:\"must be accepted\"}",
+			"\t\tempty: ${8:\"can't be empty\"}",
+			"\t\tblank: ${9:\"can't be blank\"}",
+			"\t\tpresent: ${10:\"must be blank\"}",
+			"\t\ttoo_long:",
+			"\t\t\tone: ${11:\"is too long (maximum is 1 character)\"}",
+			"\t\t\tother: ${12:\"is too long (maximum is %{count} characters)\"}",
+			"\t\ttoo_short:",
+			"\t\t\tone: ${13:\"is too short (minimum is 1 character)\"}",
+			"\t\t\tother: ${14:\"is too short (minimum is %{count} characters)\"}",
+			"\t\twrong_length:",
+			"\t\t\tone: ${15:\"is the wrong length (should be 1 character)\"}",
+			"\t\t\tother: ${16:\"is the wrong length (should be %{count} characters)\"}",
+			"\t\tnot_a_number: ${17:\"is not a number\"}",
+			"\t\tnot_an_integer: ${18:\"must be an integer\"}",
+			"\t\tgreater_than: ${19:\"must be greater than %{count}\"}",
+			"\t\tgreater_than_or_equal_to: ${20:\"must be greater than or equal to %{count}\"}",
+			"\t\tequal_to: ${21:\"must be equal to %{count}\"}",
+			"\t\tless_than: ${22:\"must be less than %{count}\"}",
+			"\t\tless_than_or_equal_to: ${23:\"must be less than or equal to %{count}\"}",
+			"\t\tother_than: ${24:\"must be other than %{count}\"}",
+			"\t\todd: ${25:\"must be odd\"}",
+			"\t\teven: ${26:\"must be even\"}"
 		],
 		"description": "Translations errors"
 	},
 
-	// Graph QL
+
+
+	"Liquid Tag Comment": {
+		"prefix": "{%:comment",
+		"body": "{%- comment -%} $0 {%- endcomment -%}",
+		"description": "Comment"
+	},
+
+	"Liquid Tag Var Assign": {
+		"prefix": "{%:assign",
+		"body": "{%- assign ${1:my_varibale} = $2 -%}",
+		"description": "Assign variable"
+	},
+	"Liquid Tag Var Capture": {
+		"prefix": "{%:capture",
+		"body": "{%- capture ${1:my_varibale} -%}$2{%- endcapture -%}",
+		"description": "Capture variable"
+	},
+	"Liquid Tag Var Increment": {
+		"prefix": "{%:increment",
+		"body": "{%- increment $1 -%}",
+		"description": "increment variable"
+	},
+	"Liquid Tag Var Decrement": {
+		"prefix": "{%:decrement",
+		"body": "{%- decrement $1 -%}",
+		"description": "decrement variable"
+	},
+
+	"Liquid Tag Control flow If": {
+		"prefix": "{%:if",
+		"body": [
+			"{%- if $1 ${2|==,!=,<,>,<=,>=,contains|} $3 -%}",
+			"\t$4",
+			"{%- endif -%}"
+		],
+		"description": "If Logic"
+	},
+	"Liquid Tag Control flow Else": {
+		"prefix": "{%:else",
+		"body": "{%- else -%}",
+		"description": "Else only"
+	},
+	"Liquid Tag Control flow Else If": {
+		"prefix": "{%:elsif",
+		"body": "{%- elsif $1 ${2|==,!=,<,>,<=,>=,contains|} $3 -%}",
+		"description": "ElseIf only"
+	},
+	"Liquid Tag Control flow If Else": {
+		"prefix": "{%:if:else",
+		"body": [
+			"{%- if $1 ${2|==,!=,<,>,<=,>=,contains|} $3 -%}",
+			"\t$4",
+			"{%- else}",
+			"\t$5",
+			"{%- endif -%}"
+		],
+		"description": "If | Else logic"
+	},
+	"Liquid Tag Control flow Case": {
+		"prefix": "{%:case",
+		"body": [
+			"{%- case ${1:handle} -%}",
+			"\t{% when $1 %}",
+			"\t\t$2",
+			"{%- endif -%}"
+		],
+		"description": "Case/when logic"
+	},
+	"Liquid Tag Control flow When": {
+		"prefix": "{%:when",
+		"body": [
+			"{% when $1 %}",
+			"\t$2"
+		],
+		"description": "Case/when logic"
+	},
+	"Liquid Tag Control flow Unless": {
+		"prefix": "{%:unless",
+		"body": [
+			"{%- unless $1 ${2|==,!=,<,>,<=,>=,contains|} $3 -%}",
+			"\t$3",
+			"{%- endunless -%}"
+		],
+		"description": "Unless logic"
+	},
+
+	"Liquid Tag Iteration For": {
+		"prefix": "{%:for",
+		"body": [
+			"{%- for $1 in $2 -%}",
+			"\t$3",
+			"{%- endfor -%}"
+		],
+		"description": "For Loop iteration"
+	},
+	"Liquid Tag Iteration Cycle": {
+		"prefix": "{%:cycle",
+		"body": "{%- cycle${1| , group|} ${2:Item 1}, ${0:Item 2} -%}",
+		"description": "Cycle iteration"
+	},
+	"Liquid Tag Iteration Break": {
+		"prefix": "{%:break",
+		"body": "{%- break -%}",
+		"description": "for loop break iteration"
+	},
+	"Liquid Tag Iteration Continue": {
+		"prefix": "{%:continue",
+		"body": "{%- continue -%}",
+		"description": "for loop continue iteration"
+	},
+	"Liquid Tag Iteration Limit": {
+		"prefix": "{%:limit",
+		"body": "limit:$1",
+		"description": "for loop limit iteration"
+	},
+	"Liquid Tag Iteration Offset": {
+		"prefix": "{%:offset",
+		"body": "offset:$1",
+		"description": "for loop offset iteration"
+	},
+	"Liquid Tag Iteration Range": {
+		"prefix": "{%:range",
+		"body": "($1..$2)",
+		"description": "for loop range iteration"
+	},
+	"Liquid Tag Iteration Reversed": {
+		"prefix": "{%:reversed",
+		"body": " reversed",
+		"description": "for loop reversed iteration"
+	},
+	"Liquid Tag Iteration TableRow": {
+		"prefix": "{%:tablerow",
+		"body": [
+			"<table>",
+			"\t{%- tablerow $1 in $2 cols:$3 limit:$4 offset:$5 -%}",
+			"\t\t$0",
+			"\t{%- endtablerow -%}",
+			"</table>"
+		],
+		"description": "tablerow iteration"
+	},
+	"Liquid Tag Iteration Columns": {
+		"prefix": "{%:cols",
+		"body": "cols:$0",
+		"description": "tablerow column only"
+	},
+
+	"Liquid Tag Raw": {
+		"prefix": "{%:raw",
+		"body": "{%- raw -%}$1{%- endraw -%}",
+		"description": "Raw"
+	},
+
+
+	"Liquid Filter abs": {
+		"prefix": "|:abs",
+		"body": "| abs",
+		"description": "abs Returns the absolute value of a number"
+	},
+	"Liquid Filter append": {
+		"prefix": "|:append",
+		"body": "| append",
+		"description": "append Concatenates two strings and returns the concatenated value"
+	},
+	"Liquid Filter at_least": {
+		"prefix": "|:at_least",
+		"body": "| at_least",
+		"description": "at_least Limits a number to a minimum value"
+	},
+	"Liquid Filter capitalize": {
+		"prefix": "|:capitalize",
+		"body": "| capitalize",
+		"description": "capitilize Makes the first character of a string capitalized"
+	},
+	"Liquid Filter ceil": {
+		"prefix": "|:ceil",
+		"body": "| ceil",
+		"description": "ceil Rounds the input up to the nearest whole number. Liquid tries to convert the input to a number before the filter is applied"
+	},
+	"Liquid Filter compact": {
+		"prefix": "|:compact",
+		"body": "| compact",
+		"description": "compact returns (Array<Object>) - array from which blank values are removed"
+	},
+	"Liquid Filter concat": {
+		"prefix": "|:concat",
+		"body": "| concat: $1",
+		"description": "concat Concatenates (joins together) multiple arrays. The resulting array contains all the items from the input arrays"
+	},
+	"Liquid Filter date": {
+		"prefix": "|:date",
+		"body": "| date: \"${1:'eg. %a, %b %d, %y'}\"",
+		"description": "date Converts a timestamp into another date format"
+	},
+	"Liquid Filter date Now": {
+		"prefix": "|:date:now",
+		"body": "\"now\" | date: \"${1:'eg. %a, %b %d, %y'}\"",
+		"description": "date now Converts a timestamp into another date format"
+	},
+	"Liquid Filter date input": {
+		"prefix": "%:date:inputFormat",
+		"body": "2010-10-31 00:00:00 -0500",
+		"description": "date input format"
+	},
+	"Liquid Filter date Century": {
+		"prefix": "%:date:Century",
+		"body": "${0:%C,}",
+		"description": "date Century eg. 20 in 2019"
+	},
+	"Liquid Filter date Year without Century": {
+		"prefix": "%:date:Year:withoutCentury",
+		"body": "${0:%y,}",
+		"description": "date Year without century 19"
+	},
+	"Liquid Filter date Year with Century": {
+		"prefix": "%:date:Year:withCentury",
+		"body": "${0:%Y,}",
+		"description": "date Year with century 2019"
+	},
+	"Liquid Filter date Month 01..12": {
+		"prefix": "%:date:Month:01",
+		"body": "${0:%m,}",
+		"description": "date month 01..12"
+	},
+	"Liquid Filter date Month Jan": {
+		"prefix": "%:date:Month:Jan",
+		"body": "${0:%b,}",
+		"description": "date month Jan"
+	},
+	"Liquid Filter date Month January": {
+		"prefix": "%:date:Month:January",
+		"body": "${0:%B,}",
+		"description": "date month January"
+	},
+	"Liquid Filter date Week 01..53": {
+		"prefix": "%:date:Week:01-53",
+		"body": "${0:%V,}",
+		"description": "date week"
+	},
+	"Liquid Filter date Week 01..53 Monday": {
+		"prefix": "%:date:Week:00-53:Monday",
+		"body": "${0:%W,}",
+		"description": "date week Assuming Monday First 00..53"
+	},
+	"Liquid Filter date Week 01..53 Sunday": {
+		"prefix": "%:date:Week:00-53:Sunday",
+		"body": "${0:%U,}",
+		"description": "date week Assuming Sunday First 00..53"
+	},
+	"Liquid Filter date Day Mon": {
+		"prefix": "%:date:Day:Mon",
+		"body": "${0:%a,}",
+		"description": "date Day Mon"
+	},
+	"Liquid Filter date Day Monday": {
+		"prefix": "%:date:Day:Monday",
+		"body": "${0:%A,}",
+		"description": "date Day Monday"
+	},
+	"Liquid Filter date Day 01..31": {
+		"prefix": "%:date:Day:01-31",
+		"body": "${0:%d,}",
+		"description": "date Day 01..31"
+	},
+	"Liquid Filter date Day 1..31": {
+		"prefix": "%:date:Day:1-31",
+		"body": "${0:%e,}",
+		"description": "date Day 1..31"
+	},
+	"Liquid Filter date Day 1..6": {
+		"prefix": "%:date:Day:1-6",
+		"body": "${0:%w,}",
+		"description": "date Day 1..6"
+	},
+	"Liquid Filter date Day 001..366": {
+		"prefix": "%:date:Day:001-366",
+		"body": "${0:%j,}",
+		"description": "date Day 001..366"
+	},
+	"Liquid Filter date Day 1..7": {
+		"prefix": "%:date:Day:1-7",
+		"body": "${0:%u,}",
+		"description": "date Day 1..7"
+	},
+	"Liquid Filter date Full date %m/%d/%y": {
+		"prefix": "%:date:Date:Full",
+		"body": "${0:%D,}",
+		"description": "date Full Date %m/%d/%y"
+	},
+	"Liquid Filter date VMS %e-%b-%Y": {
+		"prefix": "%:date:Date:VMS",
+		"body": "${0:%v,}",
+		"description": "date VMS %e-%b-%Y"
+	},
+	"Liquid Filter date ISO 8601 %Y-%m-%d": {
+		"prefix": "%:date:Date:ISO",
+		"body": "${0:%F,}",
+		"description": "date VMS %Y-%m-%d"
+	},
+	"Liquid Filter date hour 00..23": {
+		"prefix": "%:date:Hour:00-23",
+		"body": "${0:%H,}",
+		"description": "date Hour 00..23"
+	},
+	"Liquid Filter date hour 01..12": {
+		"prefix": "%:date:Hour:01-12",
+		"body": "${0:%I,}",
+		"description": "date Hour 01..12"
+	},
+	"Liquid Filter date hour 0..23": {
+		"prefix": "%:date:Hour:0-23",
+		"body": "${0:%k,}",
+		"description": "date Hour 0..23"
+	},
+	"Liquid Filter date hour 0..12": {
+		"prefix": "%:date:Hour:0-12",
+		"body": "${0:%l,}",
+		"description": "date Hour 0..12"
+	},
+	"Liquid Filter date minute 00..59": {
+		"prefix": "%:date:Hour:00-59",
+		"body": "${0:%M,}",
+		"description": "date Minute 00..59"
+	},
+	"Liquid Filter date Second 00..60": {
+		"prefix": "%:date:Second:00-60",
+		"body": "${0:%S,}",
+		"description": "date Second 00..60"
+	},
+	"Liquid Filter date Seconds since 1970": {
+		"prefix": "%:date:Seconds:1970",
+		"body": "${0:%s,}",
+		"description": "date Seconds since 1970"
+	},
+	"Liquid Filter date Millisecond 000..999": {
+		"prefix": "%:date:Millisecond:000-999",
+		"body": "${0:%L,}",
+		"description": "date Millisecond 000..999"
+	},
+	"Liquid Filter date Millisecond 3 digit": {
+		"prefix": "%:date:Millisecond:3",
+		"body": "${0:%3,}",
+		"description": "date Millisecond 3 digit"
+	},
+	"Liquid Filter date Millisecond 6 digit": {
+		"prefix": "%:date:Millisecond:6",
+		"body": "${0:%6,}",
+		"description": "date Millisecond 6 digit"
+	},
+	"Liquid Filter date Nanosecond 9 digit": {
+		"prefix": "%:date:Nanosecond:9",
+		"body": "${0:%9,}",
+		"description": "date Nanosecond 9 digit"
+	},
+	"Liquid Filter date AM/PM": {
+		"prefix": "%:date:AM/PM:U",
+		"body": "${0:%p,}",
+		"description": "date AM/PM Uppercase"
+	},
+	"Liquid Filter date am/pm": {
+		"prefix": "%:date:am/pm:l",
+		"body": "${0:%P,}",
+		"description": "date am/pm lowercase"
+	},
+	"Liquid Filter date 12-hour %I:%M:%S %p": {
+		"prefix": "%:date:12-hour",
+		"body": "${0:%r,}",
+		"description": "date 12-hour %I:%M:%S %p"
+	},
+	"Liquid Filter date 24-hour %H:%M": {
+		"prefix": "%:date:24-hour:HM",
+		"body": "${0:%R,}",
+		"description": "date 24-hour %H:%M"
+	},
+	"Liquid Filter date 24-hour %H:%M:%S": {
+		"prefix": "%:date:24-hour:HMS",
+		"body": "${0:%T,}",
+		"description": "date 24-hour %H:%M:%S"
+	},
+	"Liquid Filter date Time zone - hour offset (e.g. +0900)": {
+		"prefix": "%:date:Time-zone:hour",
+		"body": "${0:%z,}",
+		"description": "date Time zone - hour offset (e.g. +0900)"
+	},
+	"Liquid Filter date Time zone - name": {
+		"prefix": "%:date:Time-zone:name",
+		"body": "${0:%Z,}",
+		"description": "date Time zone - name"
+	},
+	"Liquid Filter default": {
+		"prefix": "|:default",
+		"body": "| default: $0",
+		"description": "default Allows you to specify a fallback in case a value doesn’t exist. default will show its value if the left side is nil, false, or empty."
+	},
+	"Liquid Filter divided_by": {
+		"prefix": "|:divided_by",
+		"body": "| divided_by: ${0:Number}",
+		"description": "divided_by Divides a number by the specified number."
+	},
+	"Liquid Filter downcase": {
+		"prefix": "|:downcase",
+		"body": "| downcase",
+		"description": "downcase makes each character in a string lowercase. It has no effect on strings which are already all lowercase."
+	},
+	"Liquid Filter escape": {
+		"prefix": "|:escape",
+		"body": "| escape",
+		"description": "escape, escapes a string by replacing characters with escape sequences (so that the string can be used in a URL, for example). It doesn’t change strings that don’t have anything to escape."
+	},
+	"Liquid Filter escape_once": {
+		"prefix": "|:escape_once",
+		"body": "| escape_once",
+		"description": "escape_once, escapes a string without changing existing escaped entities. It doesn’t change strings that don’t have anything to escape."
+	},
+	"Liquid Filter first": {
+		"prefix": "|:first",
+		"body": ".first",
+		"description": "first, returns the first item of an array."
+	},
+	"Liquid Filter floor": {
+		"prefix": "|:floor",
+		"body": "| floor",
+		"description": "floor, rounds a number down to the nearest whole number. Liquid tries to convert the input to a number before the filter is applied."
+	},
+	"Liquid Filter join": {
+		"prefix": "|:join",
+		"body": "| join: \"${0:String}\"",
+		"description": "join, combines the items in an array into a single string using the argument as a separator."
+	},
+	"Liquid Filter last": {
+		"prefix": "|:last",
+		"body": ".last",
+		"description": "last, returns the last item of an array."
+	},
+	"Liquid Filter lstrip": {
+		"prefix": "|:lstrip",
+		"body": "| lstrip",
+		"description": "lstrip, Removes all whitespaces (tabs, spaces, and newlines) from the beginning of a string. The filter does not affect spaces between words."
+	},
+	"Liquid Filter minus": {
+		"prefix": "|:minus",
+		"body": "| minus: ${0:Number}",
+		"description": "minus, subtracts a number from another number."
+	},
+	"Liquid Filter modulo": {
+		"prefix": "|:modulo",
+		"body": "| modulo: ${0:Number}",
+		"description": "modulo, returns the remainder of a division operation."
+	},
+	"Liquid Filter newline_to_br": {
+		"prefix": "|:newline_to_br",
+		"body": "| newline_to_br",
+		"description": "newline_to_br, replaces every newline (\n) with an HTML line break (<br>)."
+	},
+	"Liquid Filter plus": {
+		"prefix": "|:plus",
+		"body": "| plus: ${0:Number}",
+		"description": "plus, adds a number to another number."
+	},
+	"Liquid Filter prepend": {
+		"prefix": "|:prepend",
+		"body": "| prepend: {0:String or Variable}",
+		"description": "prepend, adds the specified string to the beginning of another string."
+	},
+	"Liquid Filter remove": {
+		"prefix": "|:remove",
+		"body": "| remove: \"{0:String}\"",
+		"description": "remove, removes every occurrence of the specified substring from a string."
+	},
+	"Liquid Filter remove_first": {
+		"prefix": "|:remove_first",
+		"body": "| remove_first: \"{0:String}\"",
+		"description": "remove, removes only the first occurrence of the specified substring from a string."
+	},
+	"Liquid Filter replace": {
+		"prefix": "|:replace",
+		"body": "| replace: \"{1:String}\", \"{2:String}\"",
+		"description": "remove, replaces every occurrence of an argument in a string with the second argument."
+	},
+	"Liquid Filter replace_first": {
+		"prefix": "|:replace_first",
+		"body": "| replace_first: \"{1:String}\", \"{2:String}\"",
+		"description": "remove, replaces only the first occurrence of an argument in a string with the second argument."
+	},
+	"Liquid Filter reverse": {
+		"prefix": "|:reverse",
+		"body": "| reverse",
+		"description": "reverse, reverses the order of the items in an array. reverse cannot reverse a string. Reverse cannot be used directly on a string."
+	},
+	"Liquid Filter round": {
+		"prefix": "|:round",
+		"body": "| round",
+		"description": "round, rounds an input number to the nearest integer or, if a number is specified as an argument, to that number of decimal places."
+	},
+	"Liquid Filter rstrip": {
+		"prefix": "|:rstrip",
+		"body": "| rstrip",
+		"description": "rstrip, removes all whitespaces (tabs, spaces, and newlines) from the right side of a string."
+	},
+	"Liquid Filter size": {
+		"prefix": "|:size",
+		"body": "| size",
+		"description": "size, returns the number of characters in a string or the number of items in an array. size can also be used with dot notation (for example, {{ my_string.size }}). This allows you to use size inside tags such as conditionals."
+	},
+	"Liquid Filter slice": {
+		"prefix": "|:slice",
+		"body": "| slice: {1:+-Number}, {0:Number}",
+		"description": "slice, returns a substring of 1 character beginning at the index specified by the argument passed in. An optional second argument specifies the length of the substring to be returned. String indices are numbered starting from 0. If the first parameter is a negative number, the indices are counted from the end of the string"
+	},
+	"Liquid Filter sort": {
+		"prefix": "|:sort",
+		"body": "| sort",
+		"description": "sort, sorts items in an array by a property of an item in the array. The order of the sorted array is case-sensitive."
+	},
+	"Liquid Filter sort_natural": {
+		"prefix": "|:sort_natural",
+		"body": "| sort_natural",
+		"description": "sort, sorts items in an array by a property of an item in the array."
+	},
+	"Liquid Filter split": {
+		"prefix": "|:split",
+		"body": "| split:  \"{0:String}\"",
+		"description": "split, divides an input string into an array using the argument as a separator. split is commonly used to convert comma-separated items from a string to an array."
+	},
+	"Liquid Filter strip": {
+		"prefix": "|:strip",
+		"body": "| strip",
+		"description": "strip, removes all whitespace (tabs, spaces, and newlines) from both the left and right side of a string. It does not affect spaces between words."
+	},
+	"Liquid Filter strip_html": {
+		"prefix": "|:strip_html",
+		"body": "| strip_html",
+		"description": "strip, removes any HTML tags from a string."
+	},
+	"Liquid Filter strip_newlines": {
+		"prefix": "|:strip_newlines",
+		"body": "| strip_newlines",
+		"description": "strip_newlines, removes any newline characters (line breaks) from a string."
+	},
+	"Liquid Filter times": {
+		"prefix": "|:times",
+		"body": "| times: {0:Number}",
+		"description": "times, multiplies a number by another number."
+	},
+	"Liquid Filter truncate": {
+		"prefix": "|:truncate",
+		"body": "| truncate: {1:Number}, \"$(0:Custom/No Ellipsis)\"",
+		"description": "truncate, truncate shortens a string down to the number of characters passed as a parameter. Default ellipsis..."
+	},
+	"Liquid Filter truncatewords": {
+		"prefix": "|:truncatewords",
+		"body": "| truncatewords: {1:Number}, \"$(0:Custom/No Ellipsis)\"",
+		"description": "truncatewords, shortens a string down to the number of words passed as the argument. Default ellipsis..."
+	},
+	"Liquid Filter uniq": {
+		"prefix": "|:uniq",
+		"body": "| uniq",
+		"description": "uniq, removes any duplicate elements in an array."
+	},
+	"Liquid Filter add_to_array": {
+		"prefix": "|:add_to_array",
+		"body": "| add_to_array: ${0:object}",
+		"description": "add_to_array, returns array to which we add the item given as the second parameter"
+	},
+	"Liquid Filter add_to_date": {
+		"prefix": "|:add_to_date",
+		"body": "| add_to_date: ${0:number_of_days integer}",
+		"description": "add_to_date, returns input date/time to which the number_of_days days have been added; use negative values to obtain a date in the past."
+	},
+	"Liquid Filter advanced_format": {
+		"prefix": "|:advanced_format",
+		"body": "| advanced_format: ${0:%[flags][width][.precision]type}",
+		"description": "add_to_date, returns (string) formatted string. %[flags][width][.precision]type. More examples and information could be taken from: https://ruby-doc.org/core-2.5.1/Kernel.html#method-i-sprintf."
+	},
+	"Liquid Filter any": {
+		"prefix": "|:any",
+		"body": "| any: ${0:String/Number}",
+		"description": "add_to_date, returns (Boolean) - checks if given array contains at least one queried string/number."
+	},
+	"Liquid Filter asset_url": {
+		"prefix": "|:asset_url",
+		"body": "| asset_url",
+		"description": "asset_url - returns (String) - url to the physical file if existing, root asset url otherwise"
+	},
+	"Liquid Filter compute_hmac": {
+		"prefix": "|:compute_hmac",
+		"body": "| compute_hmac: ${0:String - data, secret ,algorithm}",
+		"description": "compute_hmac - returns (String) - Keyed-hash message authentication code (HMAC), that can be used to authenticate requests from third party apps, for ex. Stripe webhooks requests"
+	},
+	"Liquid Filter detect": {
+		"prefix": "|:detect",
+		"body": "| detect: ${0:Hash eg field_name: value}",
+		"description": "detect - returns (Object) - with first object from collection that matches provided conditions."
+	},
+	"Liquid Filter escape_javascript": {
+		"prefix": "|:escape_javascript",
+		"body": "| escape_javascript",
+		"description": "escape_javascript - returns (String) - with escaped javascript."
+	},
+	"Liquid Filter expand_url_template": {
+		"prefix": "|:expand_url_template",
+		"body": "| expand_url_template: ${0:Hash eg field_name: \"value\"}",
+		"description": "expand_url_template - returns (String) - url"
+	},
+	"Liquid Filter extract_url_params": {
+		"prefix": "|:extract_url_params",
+		"body": "| extract_url_params: ${0:String Array<string> eg \"/search/{city}/{street}\"}",
+		"description": "extract_url_params - returns (Hash) - params"
+	},
+	"Liquid Filter fetch": {
+		"prefix": "|:fetch",
+		"body": "| fetch: ${0:Key(String)}",
+		"description": "fetch - returns (Object) - {{ users | first | fetch: \"name\"}} => \"Jane\""
+	},
+	"Liquid Filter flatten": {
+		"prefix": "|:flatten",
+		"body": "| flatten: ${0:(Array<Array>)}",
+		"description": "flatten - returns (Array<Object>) - with objects"
+	},
+	"Liquid Filter group_by": {
+		"prefix": "|:group_by",
+		"body": "| group_by: ${0:method_name (String)}",
+		"description": "group_by - returns (Hash<MethodResult => Array<Object>>) - the original array grouped by method specified by the second parameter"
+	},
+	"Liquid Filter html_safe": {
+		"prefix": "|:html_safe",
+		"body": "| html_safe: ${0:text (String)}",
+		"description": "html_safe - returns (String) - returns string that can be rendered with all html tags by default all variables are striped from danger html tags"
+	},
+	"Liquid Filter humanize": {
+		"prefix": "|:humanize",
+		"body": "| humanize",
+		"description": "humanize - returns (String) - a human readable string derived from the input; capitalizes the first word, turns underscores into spaces, and strips a trailing '_id' if present. Meant for creating pretty output."
+	},
+	"Liquid Filter in_groups_of": {
+		"prefix": "|:in_groups_of",
+		"body": "| in_groups_of: ${0:integer}",
+		"description": "in_groups_of - returns (Array<Array<Object>>) - the original array split into groups having the size specified by the second parameter (an array of arrays)"
+	},
+	"Liquid Filter intersection": {
+		"prefix": "|:intersection",
+		"body": "| intersection: ${0:other_array (Array<Object>)}",
+		"description": "intersection - returns (Array<Object>) - that exists in both arrays"
+	},
+	"Liquid Filter is_date_before": {
+		"prefix": "|:is_date_before",
+		"body": "| is_date_before: ${0:second_date (DateTime)}",
+		"description": "is_date_before - returns (Boolean) - returns true if first date is lower than second date."
+	},
+	"Liquid Filter is_date_in_past": {
+		"prefix": "|:is_date_in_past",
+		"body": "| is_date_in_past",
+		"description": "is_date_in_past - returns (Boolean) - true if date passed is in the past, false otherwise."
+	},
+	"Liquid Filter is_included_in_array": {
+		"prefix": "|:is_included_in_array",
+		"body": "| is_included_in_array: ${0:el (object)}",
+		"description": "is_included_in_array - returns (Boolean) - whether the array includes the element given."
+	},
+	"Liquid Filter is_token_valid": {
+		"prefix": "|:is_token_valid",
+		"body": "| is_token_valid: ${0:user_id (Integer)}",
+		"description": "is_token_valid - returns (Boolean) - returns true if the token has not expired and was generated for given user."
+	},
+	"Liquid Filter json": {
+		"prefix": "|:json",
+		"body": "| json",
+		"description": "json - returns object (Object) - object we want a JSON representation of"
+	},
+	"Liquid Filter limit": {
+		"prefix": "|:limit",
+		"body": "| limit: ${0:user_id (Integer)",
+		"description": "limit - returns (Array<Object>) - parameter; [1,2,3,4] limited to 2 elements gives [1,2]"
+	},
+	"Liquid Filter localize": {
+		"prefix": "|:localize",
+		"body": "| localize: ${0:format (String)",
+		"description": "localize - returns (String, nil) - formatted representation of the passed in DateTime object"
+	},
+	"Liquid Filter map": {
+		"prefix": "|:map",
+		"body": "| map: ${0:method (String)}",
+		"description": "map - returns (Array<Object>) - array of objects obtained from the original array of objects (passed in as the object parameter) by calling the method 'method' on each object in the original array"
+	},
+	"Liquid Filter map_attributes": {
+		"prefix": "|:map_attributes",
+		"body": "| map_attributes: ${0:attributes (Array<String>)}",
+		"description": "map_attributes - returns (Array<Array>) - array of arrays with values for given keys"
+	},
+	"Liquid Filter markdownify": {
+		"prefix": "|:markdownify",
+		"body": "| markdownify",
+		"description": "markdownify - returns (String) - processed text with markdown syntax changed to HTML"
+	},
+	"Liquid Filter matches": {
+		"prefix": "|:matches",
+		"body": "| matches: ${0:regexp (String)}",
+		"description": "matches - returns (Boolean) - whether the given string matches the given regular expression"
+	},
+	"Liquid Filter new_line_to_br": {
+		"prefix": "|:new_line_to_br",
+		"body": "| new_line_to_br",
+		"description": "new_line_to_br - returns (String) - replaces newlines in the input string with the HTML tag"
+	},
+	"Liquid Filter pad_left": {
+		"prefix": "|:pad_left",
+		"body": "| pad_left: ${0:count (Integer) | symbol(String)}",
+		"description": "pad_left - returns (String) - returns string padded from left to length of count with symbol character"
+	},
+	"Liquid Filter parameterize": {
+		"prefix": "|:parameterize",
+		"body": "| parameterize: ${0:separator (String) default '-'}",
+		"description": "parameterize - returns (String) - replaces special characters in a string so that it may be used as part of a 'pretty' URL; the default separator used is '-';"
+	},
+	"Liquid Filter pluralize": {
+		"prefix": "|:pluralize",
+		"body": "| pluralize: ${0:count (Number) default '2'}",
+		"description": "pluralize - returns (String) - pluralized version of the input string"
+	},
+	"Liquid Filter pricify": {
+		"prefix": "|:pricify",
+		"body": "| pricify: ${0:currency (String) default 'USD'}",
+		"description": "pricify - returns (String) - formatted price using the global price formatting rules"
+	},
+	"Liquid Filter pricify_cents": {
+		"prefix": "|:pricify_cents",
+		"body": "| pricify_cents: ${0:currency (String) default 'USD'}",
+		"description": "pricify_cents - returns (String) - formatted price using the global price formatting rule"
+	},
+	"Liquid Filter querify": {
+		"prefix": "|:querify",
+		"body": "| querify",
+		"description": "querify - returns (String) - a query string"
+	},
+	"Liquid Filter random_string": {
+		"prefix": "|:random_string",
+		"body": "| random_string",
+		"description": "random_string - returns (String) - returns a random alphanumeric string of given length;"
+	},
+	"Liquid Filter raw_escape_string": {
+		"prefix": "|:raw_escape_string",
+		"body": "| raw_escape_string",
+		"description": "raw_escape_string - returns (String) - input string HTML-escaped; this will return a string whose HTML tags will be visible in the browser"
+	},
+	"Liquid Filter regex_matches": {
+		"prefix": "|:regex_matches",
+		"body": "| regex_matches: ${0:regexp (String)}",
+		"description": "regex_matches - returns (Array<Array<String>>) - matches for the expression in the string; each item in the array is an array containing all groups matches; for example for the regex (.)(.) and the text 'abcdef', the result will look like: [[\"a\", \"b\"], [\"c\", \"d\"], [\"e\", \"f\"]]"
+	},
+	"Liquid Filter reject": {
+		"prefix": "|:reject",
+		"body": "| reject: ${0:conditions (Hash) eg field_name: value}",
+		"description": "reject - returns (Array<Object>) - with objects from collection that don't match provided conditions"
+	},
+	"Liquid Filter rotate": {
+		"prefix": "|:rotate",
+		"body": "| rotate: ${0:count (Integer) default 1}",
+		"description": "rotate - returns (Array<Object>) - with objects from collection that don't match provided conditions"
+	},
+	"Liquid Filter select": {
+		"prefix": "|:select",
+		"body": "| select: ${0:conditions (Hash) eg field_name: value}",
+		"description": "select - returns (Array<Object>) - with objects from collection that matches provided conditions"
+	},
+	"Liquid Filter sha1": {
+		"prefix": "|:sha1",
+		"body": "| sha1",
+		"description": "sha1 - returns (String) - SHA1 digest of the input object"
+	},
+	"Liquid Filter slugify": {
+		"prefix": "|:slugify",
+		"body": "| slugify",
+		"description": "slugify - returns (String) - replaces special characters in a string so that it may be used as part of a 'pretty' URL;"
+	},
+	"Liquid Filter strftime": {
+		"prefix": "|:strftime",
+		"body": "| strftime: ${0:eg'%Y-%m-%d %H:%M'}",
+		"description": "strftime - returns (String) - formatted representation of the date object; the formatted representation will be based on what the format parameter specifies"
+	},
+	"Liquid Filter subtract_array": {
+		"prefix": "|:subtract_array",
+		"body": "| subtract_array: ${0: other_array (Array<Object>)}",
+		"description": "subtract_array - returns (Array<Object>) - that is a difference between two arrays"
+	},
+	"Liquid Filter sum_array": {
+		"prefix": "|:sum_array",
+		"body": "| sum_array",
+		"description": "sum_array - returns (Numeric) - summarised value of array"
+	},
+	"Liquid Filter titleize": {
+		"prefix": "|:titleize",
+		"body": "| titleize",
+		"description": "titleize - returns (String) - capitalizes all the words and replaces some characters in the string to create a nicer looking title; it is meant for creating pretty output"
+	},
+	"Liquid Filter to_date": {
+		"prefix": "|:to_date",
+		"body": "| to_date",
+		"description": "to_date - returns (Date) - a Date object obtained/parsed from the input object"
+	},
+	"Liquid Filter to_hash": {
+		"prefix": "|:to_hash",
+		"body": "| to_hash",
+		"description": "to_hash - returns (Hash) - Hash created based on JSON"
+	},
+	"Liquid Filter to_mobile_number": {
+		"prefix": "|:to_mobile_number",
+		"body": "| to_mobile_number: ${0:country (String)}",
+		"description": "to_mobile_number - returns (String) - returns mobile number in E.164 format; recommended for sending sms notifications"
+	},
+	"Liquid Filter to_positive_integer": {
+		"prefix": "|:to_positive_integer",
+		"body": "| to_positive_integer: ${0:default (Integer)}",
+		"description": "to_positive_integer - returns (Integer)"
+	},
+	"Liquid Filter to_time": {
+		"prefix": "|:to_time",
+		"body": "| to_time: ${0:time (String, Integer)}",
+		"description": "to_time - returns (DateTime) - a time object created from parsing the string representation of time given as input"
+	},
+	"Liquid Filter translate": {
+		"prefix": "|:translate",
+		"body": "| translate: ${0:options Hash {String => String}}",
+		"description": "translate - returns (String) - translation value taken from translations yml file for the key given as parameter"
+	},
+	"Liquid Filter url_for_path_with_token": {
+		"prefix": "|:url_for_path_with_token",
+		"body": "| url_for_path_with_token: current_user",
+		"description": "url_for_path_with_token - returns (String) - returns a url for the given page slug, which includes user temporary token;"
+	},
+	"Liquid Filter video_params": {
+		"prefix": "|:video_params",
+		"body": "| video_params",
+		"description": "video_params - returns (Hash) - metadata about video"
+	},
+	"Liquid Filter videoify": {
+		"prefix": "|:videoify",
+		"body": "| videoify",
+		"description": "videoify - returns (String) - if the given url is supported, an HTML formatted string containing a video player (inside an iframe) which will play the video at the given url; otherwise an empty string is returned"
+	},
+
+
+	"Liquid Var Layout": {
+		"prefix": "{{:layout",
+		"body": "{{- content_for_layout -}}",
+		"description": "Adds specified content to Layout"
+	},
+	"Liquid Var asset_url Access": {
+		"prefix": "{{:asset_url",
+		"body": "{{- '${1:path/file.ext}' | asset_url -}}",
+		"description": "Accessing Assets - returns (String) - url to the physical file if existing, root asset url otherwise"
+	},
+	"Liquid Var Assets Check": {
+		"prefix": "{{:asset_url:list",
+		"body": "{{- asset_url -}}",
+		"description": "Use {{ asset_url }} variable to check your assets. This will list the full URL of your assets on our content delivery network, including the time of the latest update (used for caching)."
+	},
+	"Liquid Var random_string": {
+		"prefix": "{{:random_string",
+		"body": "{{- ${0:length (Int) default '12' | random_string -}}",
+		"description": "random_string - returns (String) - returns a random alphanumeric string of given length;"
+	},
+	"Liquid Tag Page content_for": {
+		"prefix": "{%:content_for",
+		"body": "{%- content_for '${1:Yield}' -%}$2{% endcontent_for %}",
+		"description": "Adds specified content to Layout"
+	},
+	"Liquid Tag execute_query": {
+		"prefix": "{%:execute_query",
+		"body": "{%- execute_query \"${1:query_name}\", result_name: \"${2:default g}\" -%}",
+		"description": "Use to execute defined graph query. Will raise an exception when query return errors."
+	},
+	"Liquid Tag Form": {
+		"prefix": "{%:form",
+		"body": [
+			"{%- form html-id: '${1:someid}', html-novalidate: true, html-class: '${2:class}', html-data-user-id: '${3:someid}', html-multipart: false -%}",
+			"\t{{ form_builder }}",
+			"{%- endform -%}"
+		],
+		"description": "used to generate a html form element for a resource. Use within form configuration. Inside the tag you can use form_builder variable."
+	},
+	"Liquid Include": {
+		"prefix": "{%:include",
+		"body": "{%- include $1 -%}",
+		"description": "Include"
+	},
+	"Liquid Include Form": {
+		"prefix": "{%:include_form",
+		"body": "{%- include_form '${1:form_config Name}', resource_id: ${2:Resource id eg user.id}, parent_resource_id: '${3:Resource type eg custom_model_type}' -%}",
+		"description": "Include_form This tag should be used to render forms defined in marketplace_builder/form_configurations."
+	},
+	"Liquid log": {
+		"prefix": "{%:log",
+		"body": "{%- log ${1:any object to be printed}, type: '${2|error,info,debug|' -%}",
+		"description": "log Print any information to marketplace logs"
+	},
+	"Liquid query_graph": {
+		"prefix": "{%:query_graph",
+		"body": "{%- query_graph \"${1:query_name}\", result_name: \"${2:default g}\" -%}",
+		"description": "log Print any information to marketplace logs"
+	},
+	"Liquid spam_protection": {
+		"prefix": "{%:spam_protection",
+		"body": "{%- spam_protection -%}",
+		"description": "spam_protection Generates html for recaptcha spam protection"
+	},
+	"Liquid Tag layout yeild": {
+		"prefix": "{%:yeild",
+		"body": "{%- yield '${0:Content_for name}' -%}",
+		"description": "yeild Execute code wrapped inside content_for {% content_for 'content_for_name' %}"
+	},
+
+
+
 	"GraphQL search page content": {
 		"prefix": "query:search_page",
 		"body": [
 			"query search_page(",
-				"\t$value: String",
+			"\t$value: String",
 			") {",
-				"\tpages: pages(",
-					"\t\tfilter: {",
-						"\t\t\tcontent: {",
-							"\t\t\t\tcontains: $value",
-						"\t\t\t}",
-					"\t\t}",
-				"\t) {",
-					"\t\ttotal_entries",
-					"\t\tresults {",
-						"\t\t\tslug",
-						"\t\t\tcontent",
-					"\t\t}",
-				"\t}",
-			"}",
+			"\tpages: pages(",
+			"\t\tfilter: {",
+			"\t\t\tcontent: {",
+			"\t\t\t\tcontains: $value",
+			"\t\t\t}",
+			"\t\t}",
+			"\t) {",
+			"\t\ttotal_entries",
+			"\t\tresults {",
+			"\t\t\tslug",
+			"\t\t\tcontent",
+			"\t\t}",
+			"\t}",
+			"}"
 		],
 		"description": "GraphQL Search page content. Page needs to be marked as searchable: true. Search will work on rendered page version, so this page can't rely on any dynamic data."
 	},
 
-	// pOS terminal commands
-    "pOS terminal command install marketplace-kit": {
-    "prefix": "?:1:marketplace-kit:install",
-	"body": "npm i -g @platform-os/marketplace-kit",
-	"description": "prefix 'sudo' If your node is installed globally"
-	},
-	"pOS terminal command update marketplace-kit": {
-	"prefix": "?:1:marketplace-kit:update",
-	"body": "npm i -g @platform-os/marketplace-kit",
-	"description": "prefix 'sudo' If your node is installed globally"
-	},
-    "pOS terminal command test marketplace-kit": {
-    "prefix": "?:2:marketplace-kit:test",
-	"body": "marketplace-kit -V",
-	"description": "If the Marketplace Kit has been installed correctly, running this command displays the version of your Marketplace Kit. If the Marketplace Kit hasn't been installed, running this command gives a command not found error."
-	},
-    "pOS terminal command initialize marketplace-kit": {
-    "prefix": "?:3:arketplace-kit:initialize",
-	"body": "marketplace-kit init",
-	"description": "Create the required directory structure using the marketplace-kit."
-	},
-    "pOS terminal command marketplace-kit add environment": {
-    "prefix": "?:4:marketplace-kit:Enviroment",
-	"body": "marketplace-kit env add ${1:[environment] eg Staging,Production} --email ${2:[your email]} --url ${3:[https://yourMarketplaceURL.com]}",
-	"description": "To add your environment to a config file, run the env add command, and authenticate with your Partner Portal credentials"
-	},
-    "pOS terminal command marketplace-kit deploy": {
-    "prefix": "?:5:marketplace-kit:deploy",
-	"body": "marketplace-kit deploy ${0:[environment] eg Staging,Production}",
-	"description": "To deploy all changes, run the deploy command"
-	},
-    "pOS terminal command marketplace-kit deploy with force": {
-    "prefix": "?:5:marketplace-kit:deploy:force",
-	"body": "marketplace-kit deploy ${0:[environment] eg Staging,Production} -f",
-	"description": "To deploy and override everything, run the deploy -f command"
-	},
-    "pOS terminal command marketplace-kit sync": {
-    "prefix": "?:5:marketplace-kit:sync",
-	"body": "marketplace-kit sync ${0:[environment] eg Staging,Production}",
-	"description": "To immediately push changes in your codebase to the environment, run the sync command"
-	},
-    "pOS terminal command marketplace-kit gui": {
-    "prefix": "?:6:marketplace-kit:gui",
-	"body": "marketplace-kit gui serve ${0:[environment] eg Staging,Production}",
-	"description": "To explore your instance database using graphql open http://localhost:3333/gui/graphql,\nTo list, edit and create resources open http://localhost:3333/gui/editor"
+
+	"console.log Form Builder ": {
+		"prefix": "clog:form_builder",
+		"body": "<script>console.log {{- form_builder | json -}};</script>",
+		"description": "Display FormBuilder in Console.log"
 	}
 
 }

@@ -29,6 +29,9 @@ Type part of a snippet, press `enter`, and the snippet unfolds.
 
 Alternatively, press `Ctrl`+`Space` (Windows, Linux) or `Cmd`+`Space` (OSX) to activate snippets from within the editor.
 
+# Liquid
+Whitespace control is add for all snippets. And can be removed when needed by deleting the - inside liquid tags.
+
 ### Comment Tag
 ```javascript
 comment- // whitespace stripped
@@ -43,13 +46,6 @@ ifelse
 unless
 case
 when
-if-     // whitespace stripped
-else-   // whitespace stripped
-elsif-  // whitespace stripped
-ifelse- // whitespace stripped
-unless- // whitespace stripped
-case-   // whitespace stripped
-when-   // whitespace stripped
 ```
 
 ### Iteration Tag
@@ -63,11 +59,6 @@ reversed    // For loops option
 break
 continue
 tablerow
-cycle-      // whitespace stripped
-cyclegroup- // whitespace stripped
-for-        // whitespace stripped
-continue-   // whitespace stripped
-tablerow-   // whitespace stripped
 ```
 
 ### Variable Tag
@@ -76,8 +67,6 @@ assign
 increment
 decrement
 capture
-assign-  // whitespace stripped
-capture- // whitespace stripped
 ```
 
 ### Theme Tag
@@ -102,14 +91,6 @@ reverse
 size
 sort
 uniq
-```
-
-### HTML Filter
-```javascript
-img_tag
-img_tag_param  // HTML Filter {% img_tag %} with parameters
-script_tag
-stylesheet_tag
 ```
 
 ### Math Filter
@@ -165,26 +146,10 @@ url_escape
 url_param_escape
 ```
 
-### URL Filter
-```javascript
-asset_url
-asset_img_url
-img_url
-```
-
 ## Release
 
-### 1.1.1
-- Update readme, step to enable Emmet
-
-### 1.1.0
-- Add whitespaced comment tag
-
-### 1.0.1
-- Add keep both tag for whitespace and non-whitespace control
-
-### 1.0.0
-- Add whitespace control
+###0.0.1
+- platform-OS snippets 
 
 ## License
 MIT

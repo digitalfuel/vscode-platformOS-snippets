@@ -1,5 +1,5 @@
 {
-    "name": "vscode-plaformOS-snippets",
+    "name": "vscode-plaformos-snippets",
     "version": "0.0.1",
     "publisher": "digitalfuel",
     "displayName": "platformOS Snippets",
@@ -21,7 +21,7 @@
 		"YAML",
 		"marketplace-kit",
         "platformOS",
-		"pOS",
+		"pOS"
     ],
     "license": "SEE LICENSE IN LICENSE.txt",
     "homepage": "https://github.com/digitalfuel/vscode-platformOS-snippets",

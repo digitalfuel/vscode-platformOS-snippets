@@ -15,7 +15,7 @@ Visual Studio Marketplace link: [https://marketplace.visualstudio.com/items?item
 ## Installation
 1. Launch Code
 2. From the command palette `Ctrl`-`Shift`-`P` (Windows, Linux) or `Cmd`-`Shift`-`P` (OSX)
-3. Type `ext install vscode-liquid-snippets`
+3. Type `ext install vscode-platformOS-snippets`
 4. Reload Visual Studio Code
 
 ## Emmet Enable

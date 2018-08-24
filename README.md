@@ -38,6 +38,22 @@ Alternatively, press `Ctrl`+`Space` (Windows, Linux) or `Cmd`+`Space` (OSX) to a
 #### Liquid
 Whitespace control is add for all snippets. And can be removed when needed by deleting the - inside liquid tags.
 
+##Terminal
+
+### Marketplace-kit
+```javascript
+Install/update
+```
+
+##YAML
+
+### Preferences
+```javascript
+Page
+```
+
+##Liquid
+
 ### Comment Tag
 ```javascript
 comment
@@ -147,6 +163,20 @@ upcase
 url_encode
 url_escape
 url_param_escape
+```
+
+##GraphQL
+
+### Preferences
+```javascript
+content
+```
+
+##Console.log
+
+### Preferences
+```javascript
+content
 ```
 
 ## Release

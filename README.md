@@ -3,7 +3,7 @@ This extension for Visual Studio Code adds snippets for Liquid, YAML, grahpQL, m
 
 Visual Studio Marketplace link: [https://marketplace.visualstudio.com/items?itemName=digitalfuel.vscode-platformOS-snippets](https://marketplace.visualstudio.com/items?itemName=digitalfuel.vscode-platformOS-snippets)
 
-## Preview
+## Preview (currently unavailable)
 ![Showcase](./images/showcase.gif)
 
 ## Prerequisite
@@ -12,11 +12,17 @@ Visual Studio Marketplace link: [https://marketplace.visualstudio.com/items?item
 ## Dependencies
 1. [Liquid Languages Support](https://marketplace.visualstudio.com/items?itemName=neilding.language-liquid)
 
-## Installation
+## Installation (currently unavailable)
 1. Launch Code
 2. From the command palette `Ctrl`-`Shift`-`P` (Windows, Linux) or `Cmd`-`Shift`-`P` (OSX)
 3. Type `ext install vscode-platformOS-snippets`
 4. Reload Visual Studio Code
+
+## Installation Manually
+1. Download zip
+2. From the command palette `Ctrl`-`Shift`-`P` (Windows, Linux) or `Cmd`-`Shift`-`P` (OSX)
+3. Type `snippets` select `Preferences: Configure User Snippets` then select `liquid.json (Liquid HTML)` from the list
+4. Copy and paste code from the zip in `/snippets/liquid.json` into your liquid user snippets
 
 ## Emmet Enable
 Go to user settings and add the following:
@@ -29,12 +35,12 @@ Type part of a snippet, press `enter`, and the snippet unfolds.
 
 Alternatively, press `Ctrl`+`Space` (Windows, Linux) or `Cmd`+`Space` (OSX) to activate snippets from within the editor.
 
-# Liquid
+#### Liquid
 Whitespace control is add for all snippets. And can be removed when needed by deleting the - inside liquid tags.
 
 ### Comment Tag
 ```javascript
-comment- // whitespace stripped
+comment
 ```
 
 ### Control Flow Tag
@@ -108,10 +114,7 @@ modulo
 
 ### Money Filter
 ```javascript
-money
-money_with_currency
-money_without_trailing_zeros
-money_without_currency
+To Come
 ```
 
 ### String Filter
@@ -149,7 +152,7 @@ url_param_escape
 ## Release
 
 ###0.0.1
-- platform-OS snippets 
+- platform-OS snippets - Use at your own risk
 
 ## License
 MIT

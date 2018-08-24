@@ -12,13 +12,13 @@ Visual Studio Marketplace link: [https://marketplace.visualstudio.com/items?item
 ## Dependencies
 1. [Liquid Languages Support](https://marketplace.visualstudio.com/items?itemName=neilding.language-liquid)
 
-## Installation (currently unavailable)
+## Installation (Coming Soon)
 1. Launch Code
 2. From the command palette `Ctrl`-`Shift`-`P` (Windows, Linux) or `Cmd`-`Shift`-`P` (OSX)
 3. Type `ext install vscode-platformOS-snippets`
 4. Reload Visual Studio Code
 
-## Installation Manually
+## Installation (Manual)
 1. Download zip
 2. From the command palette `Ctrl`-`Shift`-`P` (Windows, Linux) or `Cmd`-`Shift`-`P` (OSX)
 3. Type `snippets` select `Preferences: Configure User Snippets` then select `liquid.json (Liquid HTML)` from the list

@@ -41,7 +41,7 @@
 	},
 
 
-	
+
 	"Yaml Page Preferences": {
 		"prefix": "---:view:page",
 		"body": [
@@ -1258,7 +1258,7 @@
 
 
 	"GraphQL search page content": {
-		"prefix": "query:search_page",
+		"prefix": "gql:search_page",
 		"body": [
 			"query search_page(",
 			"\t$value: String",

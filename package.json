@@ -1,0 +1,44 @@
+{
+    "name": "vscode-plaformOS-snippets",
+    "version": "0.0.1",
+    "publisher": "digitalfuel",
+    "displayName": "platformOS Snippets",
+    "description": "platformOS Snippets",
+    "icon": "images/plaform-os-icon.svg",
+    "galleryBanner": {
+        "color": "##eff1f3",
+        "theme": "light"
+    },
+    "engines": {
+        "vscode": "0.10.x"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "keywords": [
+        "snippets",
+        "liquid",
+		"YAML",
+		"marketplace-kit",
+        "platformOS",
+		"pOS",
+    ],
+    "license": "SEE LICENSE IN LICENSE.txt",
+    "homepage": "https://github.com/digitalfuel/vscode-platformOS-snippets",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/digitalfuel/vscode-platformOS-snippets.git"
+    },
+    "bugs": "https://github.com/digitalfuel/vscode-platformOS-snippets/issues",
+    "contributes": {
+        "snippets": [
+            {
+                "language": "liquid",
+                "path": "./snippets/liquid.json"
+            }
+        ]
+    },
+    "extensionDependencies": [
+        "neilding.language-liquid"
+    ]
+}

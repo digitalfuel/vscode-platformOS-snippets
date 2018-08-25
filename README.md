@@ -186,14 +186,14 @@ url_param_escape
 
 ## GraphQL ( gql )
 
-### Examples
+### Example snippets
 ```javascript
 Search page content
 ```
 
 ## Console.log ( clog )
 
-### snippets
+### Example snippets
 ```javascript
 Form Builder
 ```

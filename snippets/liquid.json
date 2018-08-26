@@ -1234,6 +1234,16 @@
 		"body": "{%- include $1 -%}",
 		"description": "Include"
 	},
+	"Liquid Include With": {
+		"prefix": "{%:includewith",
+		"body": "{%- include $1 with $2 -%}",
+		"description": "Include a template with a local variable named the same as partial file name"
+	},
+	"Liquid Include For": {
+		"prefix": "{%:includefor",
+		"body": "{%- include $1 for $2 -%}",
+		"description": "Render partial for every item in the collection"
+	},
 	"Liquid Include Form": {
 		"prefix": "{%:include_form",
 		"body": "{%- include_form '${1:form_config Name}', resource_id: ${2:Resource id eg user.id}, parent_resource_id: '${3:Resource type eg custom_model_type}' -%}",

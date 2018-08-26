@@ -114,7 +114,7 @@
 			"    attribute_type: ${12|--custom attachement--,file|}",
 			"user_profile_types:",
 			"    - ${13:name ie user_profile_types eg developer}",
-			"order_types:",
+			"relationship_types:",
 			"    - ${14:name}",
 			"transactable_types:",
 			"    - ${15:name}",
@@ -144,8 +144,8 @@
 		],
 		"description": "Full list of transactable_types attributes"
 	},
-	"Yaml order_types": {
-		"prefix": "---:order_types:full",
+	"Yaml relationship_types": {
+		"prefix": "---:relationship_types:full",
 		"body": [
 			"---",
 			"name: ${1:snake_case}",
@@ -164,7 +164,7 @@
 			"    attribute_type: ${12|--custom attachement--,file|}",
 			"---"
 		],
-		"description": "Full list of order_types attributes"
+		"description": "Full list of relationship_types attributes"
 	},
 	"Yaml notifications email": {
 		"prefix": "---:notifications:email:full",

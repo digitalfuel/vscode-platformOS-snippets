@@ -10,7 +10,7 @@
 		"description": "If the Marketplace Kit has been installed correctly, running this command displays the version of your Marketplace Kit. If the Marketplace Kit hasn't been installed, running this command gives a command not found error."
 	},
 	"terminal marketplace-kit initialize": {
-		"prefix": "?:arketplace-kit:3:initialize",
+		"prefix": "?:marketplace-kit:3:initialize",
 		"body": "marketplace-kit init",
 		"description": "Create the required directory structure using the marketplace-kit."
 	},
@@ -396,7 +396,7 @@
 		"body": [
 			"{%- if $1 ${2|==,!=,<,>,<=,>=,contains|} $3 -%}",
 			"    $4",
-			"{%- else}",
+			"{%- else -%}",
 			"    $5",
 			"{%- endif -%}"
 		],

@@ -114,11 +114,8 @@ capture
 ```javascript
 include
 includewith    // Theme Tag {% include %} with parameters
-section
+includefor    // Theme Tag {% include %} with parameters
 raw
-layout
-layoutnone
-paginate
 ```
 
 ### Array Filter

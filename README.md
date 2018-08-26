@@ -43,9 +43,10 @@ Whitespace control is add for all snippets. And can be removed when needed by de
 ### Marketplace-kit
 ```javascript
 Install/Update
-Test
+Test (show version)
 Initialize
 Add environment
+List environments
 Deploy
 Deploy with force
 Sync

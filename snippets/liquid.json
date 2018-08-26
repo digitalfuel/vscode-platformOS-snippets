@@ -42,8 +42,8 @@
 
 
 
-	"Yaml Page Preferences": {
-		"prefix": "---:view:page",
+	"Yaml Pages Preferences": {
+		"prefix": "---:views:pages",
 		"body": [
 			"---",
 			"slug: ${1:/path}",
@@ -499,7 +499,7 @@
 
 
 	"Liquid Filter abs": {
-		"prefix": "|:abs",
+		"prefix": "|:math:abs",
 		"body": "| abs",
 		"description": "abs Returns the absolute value of a number"
 	},
@@ -535,12 +535,12 @@
 	},
 	"Liquid Filter date": {
 		"prefix": "|:date",
-		"body": "| date: \"${1:'eg. %a, %b %d, %y'}\"",
+		"body": "| date: '${1:eg. %a, %b %d, %y}'",
 		"description": "date Converts a timestamp into another date format"
 	},
 	"Liquid Filter date Now": {
 		"prefix": "|:date:now",
-		"body": "\"now\" | date: \"${1:'eg. %a, %b %d, %y'}\"",
+		"body": "'now' | date: '${1:eg. %a, %b %d, %y}'",
 		"description": "date now Converts a timestamp into another date format"
 	},
 	"Liquid Filter date input": {
@@ -550,187 +550,187 @@
 	},
 	"Liquid Filter date Century": {
 		"prefix": "%:date:Century",
-		"body": "${0:%C,}",
+		"body": "%C",
 		"description": "date Century eg. 20 in 2019"
 	},
 	"Liquid Filter date Year without Century": {
 		"prefix": "%:date:Year:withoutCentury",
-		"body": "${0:%y,}",
+		"body": "%y",
 		"description": "date Year without century 19"
 	},
 	"Liquid Filter date Year with Century": {
 		"prefix": "%:date:Year:withCentury",
-		"body": "${0:%Y,}",
+		"body": "%Y",
 		"description": "date Year with century 2019"
 	},
 	"Liquid Filter date Month 01..12": {
 		"prefix": "%:date:Month:01",
-		"body": "${0:%m,}",
+		"body": "%m",
 		"description": "date month 01..12"
 	},
 	"Liquid Filter date Month Jan": {
 		"prefix": "%:date:Month:Jan",
-		"body": "${0:%b,}",
+		"body": "%b",
 		"description": "date month Jan"
 	},
 	"Liquid Filter date Month January": {
 		"prefix": "%:date:Month:January",
-		"body": "${0:%B,}",
+		"body": "%B",
 		"description": "date month January"
 	},
 	"Liquid Filter date Week 01..53": {
 		"prefix": "%:date:Week:01-53",
-		"body": "${0:%V,}",
+		"body": "%V",
 		"description": "date week"
 	},
 	"Liquid Filter date Week 01..53 Monday": {
 		"prefix": "%:date:Week:00-53:Monday",
-		"body": "${0:%W,}",
+		"body": "%W",
 		"description": "date week Assuming Monday First 00..53"
 	},
 	"Liquid Filter date Week 01..53 Sunday": {
 		"prefix": "%:date:Week:00-53:Sunday",
-		"body": "${0:%U,}",
+		"body": "%U",
 		"description": "date week Assuming Sunday First 00..53"
 	},
 	"Liquid Filter date Day Mon": {
 		"prefix": "%:date:Day:Mon",
-		"body": "${0:%a,}",
+		"body": "%a",
 		"description": "date Day Mon"
 	},
 	"Liquid Filter date Day Monday": {
 		"prefix": "%:date:Day:Monday",
-		"body": "${0:%A,}",
+		"body": "%A",
 		"description": "date Day Monday"
 	},
 	"Liquid Filter date Day 01..31": {
 		"prefix": "%:date:Day:01-31",
-		"body": "${0:%d,}",
+		"body": "%d",
 		"description": "date Day 01..31"
 	},
 	"Liquid Filter date Day 1..31": {
 		"prefix": "%:date:Day:1-31",
-		"body": "${0:%e,}",
+		"body": "%e",
 		"description": "date Day 1..31"
 	},
 	"Liquid Filter date Day 1..6": {
 		"prefix": "%:date:Day:1-6",
-		"body": "${0:%w,}",
+		"body": "%w",
 		"description": "date Day 1..6"
 	},
 	"Liquid Filter date Day 001..366": {
 		"prefix": "%:date:Day:001-366",
-		"body": "${0:%j,}",
+		"body": "%j",
 		"description": "date Day 001..366"
 	},
 	"Liquid Filter date Day 1..7": {
 		"prefix": "%:date:Day:1-7",
-		"body": "${0:%u,}",
+		"body": "%u",
 		"description": "date Day 1..7"
 	},
 	"Liquid Filter date Full date %m/%d/%y": {
 		"prefix": "%:date:Date:Full",
-		"body": "${0:%D,}",
+		"body": "%D",
 		"description": "date Full Date %m/%d/%y"
 	},
 	"Liquid Filter date VMS %e-%b-%Y": {
 		"prefix": "%:date:Date:VMS",
-		"body": "${0:%v,}",
+		"body": "%v",
 		"description": "date VMS %e-%b-%Y"
 	},
 	"Liquid Filter date ISO 8601 %Y-%m-%d": {
 		"prefix": "%:date:Date:ISO",
-		"body": "${0:%F,}",
+		"body": "%F",
 		"description": "date VMS %Y-%m-%d"
 	},
 	"Liquid Filter date hour 00..23": {
 		"prefix": "%:date:Hour:00-23",
-		"body": "${0:%H,}",
+		"body": "%H",
 		"description": "date Hour 00..23"
 	},
 	"Liquid Filter date hour 01..12": {
 		"prefix": "%:date:Hour:01-12",
-		"body": "${0:%I,}",
+		"body": "%I",
 		"description": "date Hour 01..12"
 	},
 	"Liquid Filter date hour 0..23": {
 		"prefix": "%:date:Hour:0-23",
-		"body": "${0:%k,}",
+		"body": "%k",
 		"description": "date Hour 0..23"
 	},
 	"Liquid Filter date hour 0..12": {
 		"prefix": "%:date:Hour:0-12",
-		"body": "${0:%l,}",
+		"body": "%l",
 		"description": "date Hour 0..12"
 	},
 	"Liquid Filter date minute 00..59": {
-		"prefix": "%:date:Hour:00-59",
-		"body": "${0:%M,}",
+		"prefix": "%:date:minute:00-59",
+		"body": "%M",
 		"description": "date Minute 00..59"
 	},
 	"Liquid Filter date Second 00..60": {
 		"prefix": "%:date:Second:00-60",
-		"body": "${0:%S,}",
+		"body": "%S",
 		"description": "date Second 00..60"
 	},
 	"Liquid Filter date Seconds since 1970": {
 		"prefix": "%:date:Seconds:1970",
-		"body": "${0:%s,}",
+		"body": "%s",
 		"description": "date Seconds since 1970"
 	},
 	"Liquid Filter date Millisecond 000..999": {
 		"prefix": "%:date:Millisecond:000-999",
-		"body": "${0:%L,}",
+		"body": "%L",
 		"description": "date Millisecond 000..999"
 	},
 	"Liquid Filter date Millisecond 3 digit": {
 		"prefix": "%:date:Millisecond:3",
-		"body": "${0:%3,}",
+		"body": "%3",
 		"description": "date Millisecond 3 digit"
 	},
 	"Liquid Filter date Millisecond 6 digit": {
 		"prefix": "%:date:Millisecond:6",
-		"body": "${0:%6,}",
+		"body": "%6",
 		"description": "date Millisecond 6 digit"
 	},
 	"Liquid Filter date Nanosecond 9 digit": {
 		"prefix": "%:date:Nanosecond:9",
-		"body": "${0:%9,}",
+		"body": "%9",
 		"description": "date Nanosecond 9 digit"
 	},
 	"Liquid Filter date AM/PM": {
 		"prefix": "%:date:AM/PM:U",
-		"body": "${0:%p,}",
+		"body": "%p",
 		"description": "date AM/PM Uppercase"
 	},
 	"Liquid Filter date am/pm": {
 		"prefix": "%:date:am/pm:l",
-		"body": "${0:%P,}",
+		"body": "%P",
 		"description": "date am/pm lowercase"
 	},
 	"Liquid Filter date 12-hour %I:%M:%S %p": {
 		"prefix": "%:date:12-hour",
-		"body": "${0:%r,}",
+		"body": "%r",
 		"description": "date 12-hour %I:%M:%S %p"
 	},
 	"Liquid Filter date 24-hour %H:%M": {
 		"prefix": "%:date:24-hour:HM",
-		"body": "${0:%R,}",
+		"body": "%R",
 		"description": "date 24-hour %H:%M"
 	},
 	"Liquid Filter date 24-hour %H:%M:%S": {
 		"prefix": "%:date:24-hour:HMS",
-		"body": "${0:%T,}",
+		"body": "%T",
 		"description": "date 24-hour %H:%M:%S"
 	},
 	"Liquid Filter date Time zone - hour offset (e.g. +0900)": {
 		"prefix": "%:date:Time-zone:hour",
-		"body": "${0:%z,}",
+		"body": "%z",
 		"description": "date Time zone - hour offset (e.g. +0900)"
 	},
 	"Liquid Filter date Time zone - name": {
 		"prefix": "%:date:Time-zone:name",
-		"body": "${0:%Z,}",
+		"body": "%Z",
 		"description": "date Time zone - name"
 	},
 	"Liquid Filter default": {
@@ -1207,7 +1207,7 @@
 	},
 	"Liquid Tag Page content_for": {
 		"prefix": "{%:content_for",
-		"body": "{%- content_for '${1:Yield}' -%}$2{% endcontent_for %}",
+		"body": "{%- content_for '${1:Yield}' -%}$2{%- endcontent_for -%}",
 		"description": "Adds specified content to Layout"
 	},
 	"Liquid Tag execute_query": {

@@ -54,7 +54,7 @@
 			"slug: ${1:/path}",
 			"layout_name: ${2:layout}",
 			"authorization_policies: $3",
-			"converter: ${4:Markdown}",
+			"converter: ${4:markdown}",
 			"format: ${5|html,xml,csv,json,rss,css,js,pdf,txt|}",
 			"handler:",
 			"max_deep_level:",
@@ -1254,10 +1254,10 @@
 		"body": "{%- spam_protection -%}",
 		"description": "spam_protection Generates html for recaptcha spam protection"
 	},
-	"Liquid Tag layout yeild": {
-		"prefix": "{%:yeild",
+	"Liquid Tag layout yield": {
+		"prefix": "{%:yield",
 		"body": "{%- yield '${0:Content_for name}' -%}",
-		"description": "yeild Execute code wrapped inside content_for {% content_for 'content_for_name' %}"
+		"description": "yield Execute code wrapped inside content_for {% content_for 'content_for_name' %}"
 	},
 
 

@@ -1299,7 +1299,7 @@
 
 	"console.log Form Builder ": {
 		"prefix": "clog:form_builder",
-		"body": "<script>console.log {{- form_builder | json -}};</script>",
+		"body": "<script>console.log({{- form_builder | json -}});</script>",
 		"description": "Display FormBuilder in Console.log"
 	}
 

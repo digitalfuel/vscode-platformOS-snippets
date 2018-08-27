@@ -18,24 +18,29 @@
 		"prefix": "?:marketplace-kit:4:Enviroment",
 		"body": "marketplace-kit env add ${1:[environment] eg Staging,Production} --email ${2:[your email]} --url ${3:[https://yourMarketplaceURL.com]}",
 		"description": "To add your environment to a config file, run the env add command, and authenticate with your Partner Portal credentials"
-	},
+  },
+  "terminal marketplace-kit env list": {
+    "prefix": "?:marketplace-kit:5:EnvironmentsList",
+    "body": "marketplace-kit env list",
+    "description": "Lists all added environments."
+  },
 	"terminal marketplace-kit deploy": {
-		"prefix": "?:marketplace-kit:5:deploy",
+		"prefix": "?:marketplace-kit:6:deploy",
 		"body": "marketplace-kit deploy ${0:[environment] eg Staging,Production}",
 		"description": "To deploy all changes, run the deploy command"
 	},
 	"terminal marketplace-kit deploy with force": {
-		"prefix": "?:marketplace-kit:deploy:5:force",
+		"prefix": "?:marketplace-kit:deploy:7:force",
 		"body": "marketplace-kit deploy ${0:[environment] eg Staging,Production} -f",
 		"description": "To deploy and override everything, run the deploy -f command"
 	},
 	"terminal marketplace-kit sync": {
-		"prefix": "?:marketplace-kit:5:sync",
+		"prefix": "?:marketplace-kit:8:sync",
 		"body": "marketplace-kit sync ${0:[environment] eg Staging,Production}",
 		"description": "To immediately push changes in your codebase to the environment, run the sync command"
 	},
 	"terminal marketplace-kit gui": {
-		"prefix": "?:marketplace-kit:6:gui",
+		"prefix": "?:marketplace-kit:9:gui",
 		"body": "marketplace-kit gui serve ${0:[environment] eg Staging,Production}",
 		"description": "To explore your instance database using graphql open http://localhost:3333/gui/graphql,\nTo list, edit and create resources open http://localhost:3333/gui/editor"
 	},
@@ -49,7 +54,7 @@
 			"slug: ${1:/path}",
 			"layout_name: ${2:layout}",
 			"authorization_policies: $3",
-			"converter: ${4:Markdown}",
+			"converter: ${4:markdown}",
 			"format: ${5|html,xml,csv,json,rss,css,js,pdf,txt|}",
 			"handler:",
 			"max_deep_level:",
@@ -269,8 +274,8 @@
 			"${1:liquid if any}",
 			"    presence: ${2|true|}",
 			"        if: ${3:eg '{% if form.expires %}true{% endif %}'}",
-			"        allow_nil",
-			"        allow_blank",
+			"        allow_nil: ${4:|true,false|}",
+			"        allow_blank: ${5:|true,false|}",
 			"    unique:",
 			"        scope:",
 			"            - other_property",
@@ -281,7 +286,7 @@
 			"        message: ${9:eg disclosure is required}",
 			"    format:",
 			"        with: ${10:eg !ruby/regexp /\\A[+]?[\\d \\-()]+\\z/}",
-			"        allow_blank: ${11|true|}",
+			"        allow_blank: ${11|true,false|}",
 			"        message: ${12:eg This seems to be an invalid phone number.}",
 			"    file_content_type:",
 			"        allow:",
@@ -1229,6 +1234,16 @@
 		"body": "{%- include $1 -%}",
 		"description": "Include"
 	},
+	"Liquid Include With": {
+		"prefix": "{%:includewith",
+		"body": "{%- include $1 with $2 -%}",
+		"description": "Include a template with a local variable named the same as partial file name"
+	},
+	"Liquid Include For": {
+		"prefix": "{%:includefor",
+		"body": "{%- include $1 for $2 -%}",
+		"description": "Render partial for every item in the collection"
+	},
 	"Liquid Include Form": {
 		"prefix": "{%:include_form",
 		"body": "{%- include_form '${1:form_config Name}', resource_id: ${2:Resource id eg user.id}, parent_resource_id: '${3:Resource type eg custom_model_type}' -%}",
@@ -1249,10 +1264,10 @@
 		"body": "{%- spam_protection -%}",
 		"description": "spam_protection Generates html for recaptcha spam protection"
 	},
-	"Liquid Tag layout yeild": {
-		"prefix": "{%:yeild",
+	"Liquid Tag layout yield": {
+		"prefix": "{%:yield",
 		"body": "{%- yield '${0:Content_for name}' -%}",
-		"description": "yeild Execute code wrapped inside content_for {% content_for 'content_for_name' %}"
+		"description": "yield Execute code wrapped inside content_for {% content_for 'content_for_name' %}"
 	},
 
 

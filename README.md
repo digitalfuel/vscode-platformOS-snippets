@@ -46,9 +46,10 @@ Whitespace control is add for all snippets. And can be removed when needed by de
 ### Marketplace-kit
 ```javascript
 Install/Update
-Test
+Test (show version)
 Initialize
 Add environment
+List environments
 Deploy
 Deploy with force
 Sync
@@ -117,11 +118,8 @@ capture
 ```javascript
 include
 includewith    // Theme Tag {% include %} with parameters
-section
+includefor    // Theme Tag {% include %} with parameters
 raw
-layout
-layoutnone
-paginate
 ```
 
 ### Array Filter

@@ -28,6 +28,9 @@ Visual Studio Marketplace link: [https://marketplace.visualstudio.com/items?item
 Go to user settings and add the following:
 ```
 "emmet.includeLanguages": { "liquid": "html" },
+"files.associations": {
+        "*.liquid": "liquid"
+    },
 ```
 
 ## Usage

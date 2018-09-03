@@ -363,6 +363,8 @@
 			"      customizations:",
 			"        ${9:Custom_model_types name}:",
 			"          property_options:",
+			"            readonly: ${2|true,false,DELETE - false|}",
+			"            virtual: ${2|true,false,DELETE - false|}",
 			"            prepopulate: ${10:integer}",
 			"          properties:",
 			"            ${11:text/string}:",
@@ -1049,6 +1051,16 @@
 		"body": "| json",
 		"description": "json - returns object (Object) - object we want a JSON representation of"
 	},
+	"Liquid Filter jwt_encode": {
+		"prefix": "|:json:web-token:jwt:encode",
+		"body": "| jwt_encode: ${1|'none','HS256','HS384','HS512','RS256','RS384','RS512'|}, '${2:shared secret (for hmac) or private key for RSA (defaults to: nil)}'",
+		"description": "json web token - returns object (Hash) - result of decoded jwt token"
+	},
+	"Liquid Filter jwt_decode": {
+		"prefix": "|:json:web-token:jwt:decode",
+		"body": "| jwt_decode: ${1|'none','HS256','HS384','HS512','RS256','RS384','RS512'|}, '${2:shared secret (for hmac) or private key for RSA (defaults to: nil)}'",
+		"description": "json web token - returns object (String) - jwt token encrypted using algorithm of your choice"
+	},
 	"Liquid Filter limit": {
 		"prefix": "|:limit",
 		"body": "| limit: ${0:user_id (Integer)",
@@ -1325,6 +1337,31 @@
 			"}"
 		],
 		"description": "GraphQL Search page content. Page needs to be marked as searchable: true. Search will work on rendered page version, so this page can't rely on any dynamic data."
+	},
+	"GraphQL mutation delete customizations items": {
+		"prefix": "gql:mutation:customizations_delete_all",
+		"body": [
+			"mutation delete_${1:Custom_model_types Name} {",
+			"  customizations_delete_all(custom_model_type_name: \"${2:Custom_model_types Name}\") {",
+			"    id",
+			"  }",
+			"}"
+		],
+		"description": "GraphQL delete all of custom_model_types items."
+	},
+	"GraphQL query people": {
+		"prefix": "gql:query:people",
+		"body": [
+			"query get_users {",
+			"  people {",
+			"    results {",
+			"      id",
+			"      email",
+			"    }",
+			"  }",
+			"}"
+		],
+		"description": "GraphQL query all users (people)."
 	},
 
 

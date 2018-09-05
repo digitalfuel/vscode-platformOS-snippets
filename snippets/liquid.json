@@ -988,7 +988,7 @@
 	},
 	"Liquid Filter extract_url_params": {
 		"prefix": "|:extract_url_params",
-		"body": "| extract_url_params: ${0:String Array<string> eg \"/search/{city}/{street}\"}",
+		"body": "| extract_url_params: ${0:String Array<string> eg '\/search\/{city}\/{street}'}",
 		"description": "extract_url_params - returns (Hash) - params"
 	},
 	"Liquid Filter fetch": {
@@ -1294,7 +1294,7 @@
 	},
 	"Liquid log": {
 		"prefix": "{%:log",
-		"body": "{%- log ${1:any object to be printed}, type: '${2|error,info,debug|' -%}",
+		"body": "{%- log ${1:any object to be printed}, type: '${2|error,info,debug|}' -%}",
 		"description": "log Print any information to marketplace logs"
 	},
 	"Liquid query_graph": {
@@ -1364,11 +1364,201 @@
 		"description": "GraphQL query all users (people)."
 	},
 
+	"context.authenticity_token": {
+		"prefix": "context:authenticity_token",
+		"body": "context.authenticity_token",
+		"description": "Returns Environment eg staging"
+	},
+	"context.constants": {
+		"prefix": "context:constants",
+		"body": "context.constants",
+		"description": "Returns constants"
+	},
+	"context.current_user.email": {
+		"prefix": "context:current_user:email",
+		"body": "context.current_user.email",
+		"description": "Returns current users email"
+	},
+	"context.current_user.first_name": {
+		"prefix": "context:current_user:first_name",
+		"body": "context.current_user.first_name",
+		"description": "Returns current users first name"
+	},
+	"context.current_user.id": {
+		"prefix": "context:current_user:id",
+		"body": "context.current_user.id",
+		"description": "Returns current users id"
+	},
+	"context.current_user.last_name": {
+		"prefix": "context:current_user:last_name",
+		"body": "context.current_user.last_name",
+		"description": "Returns current users last name"
+	},
+	"context.current_user.slug": {
+		"prefix": "context:current_user:slug",
+		"body": "context.current_user.slug",
+		"description": "Returns current users slug"
+	},
+	"context.environment": {
+		"prefix": "context:evironment",
+		"body": "context.environment",
+		"description": "Returns Environment eg staging"
+	},
+	"context.flash": {
+		"prefix": "context:flash",
+		"body": "context.flash",
+		"description": "Returns flash message"
+	},
+	"context.headers.HTTP_HOST": {
+		"prefix": "context:headers:HTTP_HOST",
+		"body": "context.headers.HTTP_HOST",
+		"description": "Returns headers - HTTP_HOST"
+	},
+	"context.headers.HTTP_USER_AGENT": {
+		"prefix": "context:headers:HTTP_USER_AGENT",
+		"body": "context.headers.HTTP_USER_AGENT",
+		"description": "Returns headers - HTTP_USER_AGENT"
+	},
+	"context.headers.PATH_INFO": {
+		"prefix": "context:headers:PATH_INFO",
+		"body": "context.headers.PATH_INFO",
+		"description": "Returns headers - PATH_INFO"
+	},
+	"context.headers.QUERY_STRING": {
+		"prefix": "context:headers:QUERY_STRING",
+		"body": "context.headers.QUERY_STRING",
+		"description": "Returns headers - QUERY_STRING"
+	},
+	"context.headers.REQUEST_METHOD": {
+		"prefix": "context:headers:REQUEST_METHOD",
+		"body": "context.headers.REQUEST_METHOD",
+		"description": "Returns headers - REQUEST_METHOD"
+	},
+	"context.headers.REQUEST_URI": {
+		"prefix": "context:headers:REQUEST_URI",
+		"body": "context.headers.REQUEST_URI",
+		"description": "Returns headers - REQUEST_URI"
+	},
+	"context.headers.SERVER_NAME": {
+		"prefix": "context:headers:SERVER_NAME",
+		"body": "context.headers.SERVER_NAME",
+		"description": "Returns headers - SERVER_NAME"
+	},
+	"context.headers.SERVER_PORT": {
+		"prefix": "context:headers:SERVER_PORT",
+		"body": "context.headers.SERVER_PORT",
+		"description": "Returns headers - SERVER_PORT"
+	},
+	"context.location.host": {
+		"prefix": "context:location:host",
+		"body": "context.location.host",
+		"description": "Returns location - host"
+	},
+	"context.location.href": {
+		"prefix": "context:location:href",
+		"body": "context.location.href",
+		"description": "Returns location - href"
+	},
+	"context.location.pathname": {
+		"prefix": "context:location:pathname",
+		"body": "context.location.pathname",
+		"description": "Returns location - pathname"
+	},
+	"context.location.search:slug": {
+		"prefix": "context:location:search:slug",
+		"body": "context.location.search.slug${1:Integer eg slug, slug2 first slug has no number}",
+		"description": "Returns location search slug items inside pathname eg /folder1/folder2 => slug=folder1, slug2=folder2"
+	},
+	"context.location.search:queryString": {
+		"prefix": "context:location:search:queryString",
+		"body": "context.location.search.${1:Name of query string}",
+		"description": "Returns location search name of query string"
+	},
+	"context.page.id": {
+		"prefix": "context:page:id",
+		"body": "context.page.id",
+		"description": "Returns page - id"
+	},
+	"context.page.layout_name": {
+		"prefix": "context:page:layout_name",
+		"body": "context.page.layout_name",
+		"description": "Returns page - layout_name"
+	},
+	"context.page.metadata": {
+		"prefix": "context:page:metadata",
+		"body": "context.page.metadata.${1:metadata name}",
+		"description": "Returns page - metadata"
+	},
+	"context.page.slug": {
+		"prefix": "context:page:slug",
+		"body": "context.page.slug",
+		"description": "Returns page - slug"
+	},
+	"context.params.action": {
+		"prefix": "context:params:action",
+		"body": "context.params.action",
+		"description": "Returns params - action"
+	},
+	"context.params.controller": {
+		"prefix": "context:params:controller",
+		"body": "context.params.controller",
+		"description": "Returns params - controller"
+	},
+	"context.params.language": {
+		"prefix": "context:params:language",
+		"body": "context.params.language",
+		"description": "Returns params - language"
+	},
+	"context.params.slug": {
+		"prefix": "context:params:slug",
+		"body": "context.params.slug${1:Integer eg slug, slug2 first slug has no number}",
+		"description": "Returns params - slug items inside pathname eg /folder1/folder2 => slug=folder1, slug2=folder2"
+	},
+	"context.session._csrf_token": {
+		"prefix": "context:session:_csrf_token",
+		"body": "context.session._csrf_token",
+		"description": "Returns session - _csrf_token"
+	},
+	"context.session.instance_admin_as_user": {
+		"prefix": "context:session:instance_admin_as_user",
+		"body": "context.session.instance_admin_as_user",
+		"description": "Returns session - instance_admin_as_user"
+	},
+	"context.session.instance_admin_as_user.admin_user_id": {
+		"prefix": "context:session:instance_admin_as_user:admin_user_id",
+		"body": "context.session.instance_admin_as_user.admin_user_id",
+		"description": "Returns session - instance_admin_as_user admin_user_id"
+	},
+	"context.session.instance_admin_as_user.redirect_back_to": {
+		"prefix": "context:session:instance_admin_as_user:redirect_back_to",
+		"body": "context.session.instance_admin_as_user.redirect_back_to",
+		"description": "Returns session - instance_admin_as_user redirect_back_to"
+	},
+	"context.session.warden.user.user.key": {
+		"prefix": "context:session:warden.user.user.key",
+		"body": "context.session.warden.user.user.key",
+		"description": "Returns session - warden.user.user.key (array)"
+	},
+	"context.session.warden.user.user.session.last_request_at": {
+		"prefix": "context:session:warden.user.user.session:last_request_at",
+		"body": "context.session.warden.user.user.session.last_request_at",
+		"description": "Returns session - warden.user.user.session last_request_at"
+	},
+	"context.visitor.ip": {
+		"prefix": "context:visitor:IP",
+		"body": "context.visitor.IP",
+		"description": "Returns visitor - IP number"
+	},
+	"console.log Context JSON": {
+		"prefix": "clog:context:json",
+		"body": "<script>console.log({{ context | json }});</script>",
+		"description": "Display Context JSON in Console.log"
+	},
 
-	"console.log Form Builder ": {
-		"prefix": "clog:form_builder",
-		"body": "<script>console.log({{- form_builder | json -}});</script>",
-		"description": "Display FormBuilder in Console.log"
+	"console.log Form Builder JSON": {
+		"prefix": "clog:form_builder:json",
+		"body": "<script>console.log({{ form_builder | json }});</script>",
+		"description": "Display FormBuilder JSON in Console.log"
 	}
 
 }

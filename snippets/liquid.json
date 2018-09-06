@@ -93,8 +93,8 @@
 			"---",
 			"name: ${1:snake_case}",
 			"custom_attributes:",
-			"    - ${2:name}: {3:value}",
-			"    ${4:name}: {5:value}",
+			"    - ${2:name}: ${3:value}",
+			"    ${4:name}: ${5:value}",
 			"---"
 		],
 		"description": "Yaml Page settings"
@@ -177,9 +177,9 @@
 			"---",
 			"name: ${1:snake_case}",
 			"to: ${2:email, mobile, API endpoint}",
-			"delay: {3:Integer}",
+			"delay: ${3:Integer}",
 			"enabled: ${4:alert (Boolean) default true}",
-			"trigger_condition: {5:Liquid condition default true}",
+			"trigger_condition: ${5:Liquid condition default true}",
 			"from: ${6:email}",
 			"reply_to: ${7:email}",
 			"cc: ${8:email}",
@@ -196,9 +196,9 @@
 			"---",
 			"name: ${1:snake_case}",
 			"to: ${2:email, mobile, API endpoint}",
-			"delay: {3:Integer}",
+			"delay: ${3:Integer}",
 			"enabled: ${4:alert (Boolean) default true}",
-			"trigger_condition: {5:Liquid condition default true}",
+			"trigger_condition: ${5:Liquid condition default true}",
 			"---"
 		],
 		"description": "Full list of SMS notifcation attributes"
@@ -209,9 +209,9 @@
 			"---",
 			"name: ${1:snake_case}",
 			"to: ${2:email, mobile, API endpoint}",
-			"delay: {3:Integer}",
+			"delay: ${3:Integer}",
 			"enabled: ${4:alert (Boolean) default true}",
-			"trigger_condition: {5:Liquid condition default true}",
+			"trigger_condition: ${5:Liquid condition default true}",
 			"request_type: ${6|get,post,put,delete|}",
 			"headers: '{",
 			"    \"Content-Type\": \"${8|application/json,text/html|}\"",
@@ -843,17 +843,17 @@
 	},
 	"Liquid Filter prepend": {
 		"prefix": "|:prepend",
-		"body": "| prepend: {0:String or Variable}",
+		"body": "| prepend: ${0:String or Variable}",
 		"description": "prepend, adds the specified string to the beginning of another string."
 	},
 	"Liquid Filter remove": {
 		"prefix": "|:remove",
-		"body": "| remove: \"{0:String}\"",
+		"body": "| remove: \"${0:String}\"",
 		"description": "remove, removes every occurrence of the specified substring from a string."
 	},
 	"Liquid Filter remove_first": {
 		"prefix": "|:remove_first",
-		"body": "| remove_first: \"{0:String}\"",
+		"body": "| remove_first: \"${0:String}\"",
 		"description": "remove, removes only the first occurrence of the specified substring from a string."
 	},
 	"Liquid Filter replace": {
@@ -863,7 +863,7 @@
 	},
 	"Liquid Filter replace_first": {
 		"prefix": "|:replace_first",
-		"body": "| replace_first: \"{1:String}\", \"{2:String}\"",
+		"body": "| replace_first: \"${1:String}\", \"${2:String}\"",
 		"description": "remove, replaces only the first occurrence of an argument in a string with the second argument."
 	},
 	"Liquid Filter reverse": {
@@ -888,7 +888,7 @@
 	},
 	"Liquid Filter slice": {
 		"prefix": "|:slice",
-		"body": "| slice: {1:+-Number}, {0:Number}",
+		"body": "| slice: ${1:+-Number}, ${0:Number}",
 		"description": "slice, returns a substring of 1 character beginning at the index specified by the argument passed in. An optional second argument specifies the length of the substring to be returned. String indices are numbered starting from 0. If the first parameter is a negative number, the indices are counted from the end of the string"
 	},
 	"Liquid Filter sort": {
@@ -903,7 +903,7 @@
 	},
 	"Liquid Filter split": {
 		"prefix": "|:split",
-		"body": "| split:  \"{0:String}\"",
+		"body": "| split:  \"${0:String}\"",
 		"description": "split, divides an input string into an array using the argument as a separator. split is commonly used to convert comma-separated items from a string to an array."
 	},
 	"Liquid Filter strip": {
@@ -923,17 +923,17 @@
 	},
 	"Liquid Filter times": {
 		"prefix": "|:times",
-		"body": "| times: {0:Number}",
+		"body": "| times: ${0:Number}",
 		"description": "times, multiplies a number by another number."
 	},
 	"Liquid Filter truncate": {
 		"prefix": "|:truncate",
-		"body": "| truncate: {1:Number}, \"$(0:Custom/No Ellipsis)\"",
+		"body": "| truncate: ${1:Number}, \"$(0:Custom/No Ellipsis)\"",
 		"description": "truncate, truncate shortens a string down to the number of characters passed as a parameter. Default ellipsis..."
 	},
 	"Liquid Filter truncatewords": {
 		"prefix": "|:truncatewords",
-		"body": "| truncatewords: {1:Number}, \"$(0:Custom/No Ellipsis)\"",
+		"body": "| truncatewords: ${1:Number}, \"$(0:Custom/No Ellipsis)\"",
 		"description": "truncatewords, shortens a string down to the number of words passed as the argument. Default ellipsis..."
 	},
 	"Liquid Filter uniq": {

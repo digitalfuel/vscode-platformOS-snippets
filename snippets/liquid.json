@@ -250,6 +250,12 @@
 			"resource_owner: ${13|self,anyone|}",
 			"sms_notifications: $14",
 			"spam_protection: $15",
+			"default_payload: |-",
+			"  {",
+			"    \"properties_attributes\": {",
+			"      \"${16:property name}\": \"${17:Value}\"",
+			"    }",
+			"  }",
 			"---"
 		],
 		"description": "Full list of form_configurations attributes"
@@ -545,6 +551,11 @@
 		"prefix": "|:append",
 		"body": "| append",
 		"description": "append Concatenates two strings and returns the concatenated value"
+	},
+	"Liquid Filter assign_to_hash_key": {
+		"prefix": "|:assign_to_hash_key",
+		"body": "| assign_to_hash_key: ${0:String eg('name', 'Dunder Mifflin'), Hash or Object}",
+		"description": "assign_to_hash_key returns (Hash) params hash (Hash), key (String), value (Object). Allowing you to add new key-value pairs into existing hash."
 	},
 	"Liquid Filter at_least": {
 		"prefix": "|:at_least",
@@ -1151,6 +1162,11 @@
 		"body": "| rotate: ${0:count (Integer) default 1}",
 		"description": "rotate - returns (Array<Object>) - with objects from collection that don't match provided conditions"
 	},
+	"Liquid Filter sanitize": {
+		"prefix": "|:sanitize",
+		"body": "| sanitize${1| ,: whitelist_attributes,: whitelist_tags|}",
+		"description": "sanitize - returns (String) params whitelist_attributes (Array<String>) - (defaults to: nil), whitelist_tags (Array<String>) - (defaults to: nil) - allowing you to sanitize user input before rendering it and at the same time decide which attributes should not be sanitized"
+	},
 	"Liquid Filter select": {
 		"prefix": "|:select",
 		"body": "| select: ${0:conditions (Hash) eg field_name: value}",
@@ -1220,6 +1236,11 @@
 		"prefix": "|:url_for_path_with_token",
 		"body": "| url_for_path_with_token: current_user",
 		"description": "url_for_path_with_token - returns (String) - returns a url for the given page slug, which includes user temporary token;"
+	},
+	"Liquid Filter useragent": {
+		"prefix": "|:useragent",
+		"body": "| useragent",
+		"description": "useragent - (Hash) - parsed browser useragent information"
 	},
 	"Liquid Filter video_params": {
 		"prefix": "|:video_params",

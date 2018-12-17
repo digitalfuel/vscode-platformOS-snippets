@@ -1301,7 +1301,7 @@
 	},
 	"Liquid Tag export": {
 		"prefix": "{%:export",
-		"body": "{%- export \"${1:variable_names}\", namespace: '\"${2:namespace}\"' -%}",
+		"body": "{%- export ${1:variable_names}, namespace: '${2:namespace}' -%}",
 		"description": "Exports and makes avaiable variables from an include with local scope outside the partial. Used in conjunction with context.exports"
 	},
 	"Liquid Tag Form": {

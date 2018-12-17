@@ -562,6 +562,16 @@
 		"body": "| at_least",
 		"description": "at_least Limits a number to a minimum value"
 	},
+	"Liquid Filter base64_decode": {
+		"prefix": "|:base64_decode",
+		"body": "| base64_decode",
+		"description": "base64_decode decode base64 encoded string"
+	},
+	"Liquid Filter base64_encode": {
+		"prefix": "|:base64_encode",
+		"body": "| base64_encode",
+		"description": "base64_encode creates a base64 encoded string"
+	},
 	"Liquid Filter capitalize": {
 		"prefix": "|:capitalize",
 		"body": "| capitalize",
@@ -1117,6 +1127,11 @@
 		"body": "| parameterize: ${0:separator (String) default '-'}",
 		"description": "parameterize - returns (String) - replaces special characters in a string so that it may be used as part of a 'pretty' URL; the default separator used is '-';"
 	},
+	"Liquid Filter parse_json": {
+		"prefix": "|:parse_json",
+		"body": "| parse_json",
+		"description": "parse_json - returns (String) - converts json into hash"
+	},
 	"Liquid Filter pluralize": {
 		"prefix": "|:pluralize",
 		"body": "| pluralize: ${0:count (Number) default '2'}",
@@ -1210,7 +1225,7 @@
 	"Liquid Filter to_hash": {
 		"prefix": "|:to_hash",
 		"body": "| to_hash",
-		"description": "to_hash - returns (Hash) - Hash created based on JSON"
+		"description": "to_hash - returns (Hash) - Hash created based on JSON - DEPRICATED: USE | parse_json FILTER"
 	},
 	"Liquid Filter to_mobile_number": {
 		"prefix": "|:to_mobile_number",
@@ -1292,6 +1307,17 @@
 			"{%- endform -%}"
 		],
 		"description": "used to generate a html form element for a resource. Use within form configuration. Inside the tag you can use form_builder variable."
+	},
+	"Liquid Tag parse_json": {
+		"prefix": "{%:parse_json",
+		"body": [
+			"{% parse_json car %}",
+			"  {",
+			"    'name': 'value'",
+			"  }",
+			"{%- endparse_json -%}"
+		],
+		"description": "used to generate hash from json."
 	},
 	"Liquid Include": {
 		"prefix": "{%:include",

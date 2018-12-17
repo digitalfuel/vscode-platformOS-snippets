@@ -1,0 +1,31 @@
+---
+slug: /
+layout_name: 1col
+---
+{%- assign name = 'Home' -%}
+{%- content_for 'pagetitle' -%}{{ name }}{%- endcontent_for -%}
+<h1>{{ name | capitalize }}</h1>
+
+<h6>{{ "now" | date: "%Y-%m-%d %H:%M" }}</h6>
+
+{{ -17 | abs }}
+
+{%- include_form 'form_config Name', resource_id: Resource id eg user.id, parent_resource_id: 'Resource type eg custom_model_type' -%}
+
+{%- execute_query "query_name", result_name: "default g" -%}
+| sanitize: ${0|'whitelist_attributes','whitelist_tags'|}
+
+| sanitize: ${0|'whitelist_attributes','whitelist_tags'|}
+
+
+| sanitize: ${0|whitelist_attributes,whitelist_tags|}
+
+{%- cycle group Item 1, Item 2 -%}
+
+| assign_to_hash_key:  String eg('name', 'Dunder Mifflin'), Hash or Object
+
+| assign_to_hash_key: 
+
+| useragent
+
+| sanitize: whitelist_tags

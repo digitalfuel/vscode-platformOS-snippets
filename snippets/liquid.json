@@ -1300,7 +1300,7 @@
 		"description": "Use to execute defined graph query. Will raise an exception when query return errors."
 	},
 	"Liquid Tag export": {
-		"prefix": "{%:execute_query",
+		"prefix": "{%:export",
 		"body": "{%- export \"${1:variable_names}\", namespace: '\"${2:namespace}\"' -%}",
 		"description": "Exports and makes avaiable variables from an include with local scope outside the partial. Used in conjunction with context.exports"
 	},

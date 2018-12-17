@@ -1311,7 +1311,7 @@
 	"Liquid Tag parse_json": {
 		"prefix": "{%:parse_json",
 		"body": [
-			"{% parse_json car %}",
+			"{% parse_json ${1:variable} %}",
 			"  {",
 			"    'name': 'value'",
 			"  }",

@@ -33,12 +33,12 @@
     "contributes": {
         "snippets": [
             {
-                "language": "liquid",
+                "language": "pos-liquid",
                 "path": "./snippets/liquid.json"
             }
         ]
     },
     "extensionDependencies": [
-        "neilding.language-liquid"
+        "digitalfuel.vscode-pos-liquid"
     ]
 }

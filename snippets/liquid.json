@@ -1329,7 +1329,7 @@
 	"Liquid Filter sort_by": {
 		"prefix": "|:sort_by",
 		"body": "| sort_by: '${0:property}'",
-		"description": " - returns (Array) - Sorted object (Array of Hash)"
+		"description": "returns (Array) - Sorted object (Array of Hash)"
 	},
 	"Liquid Filter strftime": {
 		"prefix": "|:strftime",

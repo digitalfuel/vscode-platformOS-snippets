@@ -116,6 +116,7 @@ capture
 
 ### Theme Tag
 ```javascript
+liquid
 render
 include // deprecated
 includewith    // Theme Tag {% include %} with parameters

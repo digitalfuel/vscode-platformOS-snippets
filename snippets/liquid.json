@@ -1467,6 +1467,12 @@
 
 	// START LIQUID TAG THEME
 
+	"Liquid Theme: Echo": {
+		"prefix": " echo",
+		"body": "echo $1",
+		"description": "Liquid Theme Tag Echo"
+	},
+
 	"Liquid Theme: Comment": {
 		"prefix": " comment",
 		"body": [

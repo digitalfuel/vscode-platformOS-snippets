@@ -524,6 +524,11 @@
 		"body": " reversed",
 		"description": "for loop reversed iteration"
 	},
+	"Liquid Tags: Loops ifchanged": {
+		"prefix": "{%:ifchanged",
+		"body": "{%- ifchanged -%} $0 {%- endifchanged -%}",
+		"description": "The ifchanged tag is typically called inside a {% for %} loop because it executes a block of code but only outputs the result if this is the first time it was called or if the previous call had a different result."
+	},
 	"Liquid Tags: Loops TableRow": {
 		"prefix": "{%:tablerow",
 		"body": [
@@ -588,11 +593,6 @@
 		"prefix": "|:append",
 		"body": "| append: ${0:String or Variable}",
 		"description": "append Concatenates two strings and returns the concatenated value"
-	},
-	"Liquid Filter assign_to_hash_key": {
-		"prefix": "|:assign_to_hash_key",
-		"body": "| assign_to_hash_key: ${0:String eg('name', 'Dunder Mifflin'), Hash or Object}",
-		"description": "assign_to_hash_key returns (Hash) params hash (Hash), key (String), value (Object). Allowing you to add new key-value pairs into existing hash."
 	},
 	"Liquid Filter at_least": {
 		"prefix": "|:at_least",
@@ -1010,7 +1010,12 @@
 		"description": "url_encode, converts any URL-unsafe characters in a string into percent-encoded characters."
 	},
 
-
+	// START PLATFORMOS FILTERS
+	"Liquid Filter assign_to_hash_key": {
+		"prefix": "|:assign_to_hash_key",
+		"body": "| assign_to_hash_key: ${0:String eg('name', 'Dunder Mifflin'), Hash or Object}",
+		"description": "assign_to_hash_key returns (Hash) params hash (Hash), key (String), value (Object). Allowing you to add new key-value pairs into existing hash."
+	},
 	"Liquid Filter add_hash_key": {
 		"prefix": "|:add_hash_key",
 		"body": "| add_hash_key: '${1:key}' ${2:value object} ",
@@ -1018,13 +1023,18 @@
 	},
 	"Liquid Filter add_to_array": {
 		"prefix": "|:add_to_array",
-		"body": "| add_to_array: ${0:object}",
+		"body": "| add_to_array: ${0:object} ",
 		"description": "add_to_array, returns array to which we add the item given as the second parameter"
 	},
 	"Liquid Filter add_to_date": {
 		"prefix": "|:add_to_date",
-		"body": "| add_to_date: ${0:number_of_days integer}",
+		"body": "| add_to_date: ${0:number_of_days integer} ",
 		"description": "add_to_date, returns input date/time to which the number_of_days days have been added; use negative values to obtain a date in the past."
+	},
+	"Liquid Filter add_to_time": {
+		"prefix": "|:add_to_time",
+		"body": "| add_to_time: ${1:number integer}, '${2|y,mo,w,d,h,m,s|}' ",
+		"description": "add_to_time, returns time to which the time number have been added; use negative values to obtain a time in the past."
 	},
 	"Liquid Filter advanced_format": {
 		"prefix": "|:advanced_format",
@@ -1051,6 +1061,11 @@
 		"body": "| base64_encode",
 		"description": "base64_encode creates a base64 encoded string"
 	},
+	"Liquid Filter cast_json_string_to_hash": {
+		"prefix": "|:cast_json_string_to_hash",
+		"body": "| cast_json_string_to_hash",
+		"description": "Casts json string to hash"
+	},
 	"Liquid Filter compact": {
 		"prefix": "|:compact",
 		"body": "| compact",
@@ -1068,8 +1083,23 @@
 	},
 	"Liquid Filter dig": {
 		"prefix": "|:dig",
-		"body": "| dig: ${0:Hash, Array}",
+		"body": "| dig: ${1:Hash, Array}",
 		"description": "dig - returns (Object) - digs into and retrieve data from json"
+	},
+	"Liquid Filter digest": {
+		"prefix": "|:digest",
+		"body": "| digest${1| ,: 'md5',: 'sha1',: 'sha256',: 'sha384',: 'sha512'|}",
+		"description": "digest - returns (String) - hexadecimal hash value obtained by applying the selected algorithm to the message"
+	},
+	"Liquid Filter download_file": {
+		"prefix": "|:download_file",
+		"body": "| download_file ${1:max_size max:50 default:1}",
+		"description": "download_file - returns (String) - Body of the remote file"
+	},
+	"Liquid Filter encrypt": {
+		"prefix": "|:encrypt",
+		"body": "| encrypt '${1:algorithm}', '${2:key}' ${3| ,\\,iv: initialization vector|}",
+		"description": "encrypt - returns (String) - Base64 encoded (RFC 4648) encrypted string using the algorithm of your choice. Initialization Vector (iv) will be appended"
 	},
 	"Liquid Filter escape_javascript": {
 		"prefix": "|:escape_javascript",
@@ -1088,7 +1118,7 @@
 	},
 	"Liquid Filter fetch": {
 		"prefix": "|:fetch",
-		"body": "| fetch: ${0:Key(String)}",
+		"body": "| fetch: ${0:Key(String)} Deprecated",
 		"description": "fetch - returns (Object) - {{ users | first | fetch: \"name\"}} => \"Jane\""
 	},
 	"Liquid Filter flatten": {
@@ -1096,17 +1126,20 @@
 		"body": "| flatten: ${0:(Array<Array>)}",
 		"description": "flatten - returns (Array<Object>) - with objects"
 	},
-
 	"Liquid Filter format_number": {
 		"prefix": "|:format_number",
 		"body": "| format_number: precision: ${1:precision(integer)}, significant: ${2:significant()}, separator: '${3:separator}', delimiter: '${4:delimiter}', ${5|'strip_insignificant_zeros',''}",
 		"description": "format_number - returns (string)"
 	},
-	
 	"Liquid Filter group_by": {
 		"prefix": "|:group_by",
 		"body": "| group_by: ${0:method_name (String)}",
 		"description": "group_by - returns (Hash<MethodResult => Array<Object>>) - the original array grouped by method specified by the second parameter"
+	},
+	"Liquid Filter hcaptcha": {
+		"prefix": "|:hcaptcha",
+		"body": "| hcaptcha",
+		"description": "hcaptcha - returns (Boolean) - whether the parameters are valid hcaptcha verification parameters"
 	},
 	"Liquid Filter html_safe": {
 		"prefix": "|:html_safe",
@@ -1140,8 +1173,13 @@
 	},
 	"Liquid Filter is_included_in_array": {
 		"prefix": "|:is_included_in_array",
-		"body": "| is_included_in_array: ${0:el (object)}",
+		"body": "| is_included_in_array: ${0:el (object)} Deprecated",
 		"description": "is_included_in_array - returns (Boolean) - whether the array includes the element given."
+	},
+	"Liquid Filter is_json_valid": {
+		"prefix": "|:is_json_valid",
+		"body": "| is_json_valid: ${0:String}",
+		"description": "is_token_valid - returns (Boolean) - returns true if the token has not expired and was generated for given user."
 	},
 	"Liquid Filter is_token_valid": {
 		"prefix": "|:is_token_valid",
@@ -1178,10 +1216,10 @@
 		"body": "| map_attributes: ${0:attributes (Array<String>)}",
 		"description": "map_attributes - returns (Array<Array>) - array of arrays with values for given keys"
 	},
-	"Liquid Filter markdownify": {
-		"prefix": "|:markdownify",
-		"body": "| markdownify",
-		"description": "markdownify - returns (String) - processed text with markdown syntax changed to HTML"
+	"Liquid Filter markdown": {
+		"prefix": "|:markdown",
+		"body": "| markdown",
+		"description": "markdown - returns (String) - processed text with markdown syntax changed to HTML"
 	},
 	"Liquid Filter matches": {
 		"prefix": "|:matches",
@@ -1253,6 +1291,11 @@
 		"body": "| remove_hash_key: '${0:Key(String)}'",
 		"description": "remove_hash_key - returns (Object)"
 	},
+	"Liquid Filter replace_regex": {
+		"prefix": "|:replace_regex",
+		"body": "| replace_regex: ${1:regexp (string)}, ${2:replacement (string)}, ${3:options (string) (e.g. 'ix', 'm', 'mi' etc.) - default: ''}, ${4:regexp (boolean)}",
+		"description": "rotate - returns (Array<Object>) - with objects from collection that don't match provided conditions"
+	},
 	"Liquid Filter rotate": {
 		"prefix": "|:rotate",
 		"body": "| rotate: ${0:count (Integer) default 1}",
@@ -1282,6 +1325,11 @@
 		"prefix": "|:slugify",
 		"body": "| slugify",
 		"description": "slugify - returns (String) - replaces special characters in a string so that it may be used as part of a 'pretty' URL;"
+	},
+	"Liquid Filter sort_by": {
+		"prefix": "|:sort_by",
+		"body": "| sort_by: '${0:property}'",
+		"description": " - returns (Array) - Sorted object (Array of Hash)"
 	},
 	"Liquid Filter strftime": {
 		"prefix": "|:strftime",
@@ -1363,6 +1411,7 @@
 		"body": "| videoify",
 		"description": "videoify - returns (String) - if the given url is supported, an HTML formatted string containing a video player (inside an iframe) which will play the video at the given url; otherwise an empty string is returned"
 	},
+	// END PLATFORMOS FILTER
 
 
 	"Liquid Var Layout": {
@@ -1415,10 +1464,22 @@
 		],
 		"description": "used to generate a html form element for a resource. Use within form configuration. Inside the tag you can use form_builder variable."
 	},
+	"Liquid pOS Tags: function": {
+		"prefix": "{%:function",
+		"body": "{%- function ${1:my_varibale} = $2 -%}",
+		"description": "Allows to store a variable returned by a partial. Partial needs to return data with `return` tag."
+	},
 	"Liquid pOS Tags: graphql": {
 		"prefix": "{%:graphql",
 		"body": "{%- graphql \"${1:query_name}\", result_name: \"${2:default g}\" -%}",
 		"description": "execute GraphQL query stored in a file or invoke GraphQL query inline."
+	},
+	"Liquid pOS Tags: hash_assign": {
+		"prefix": "{%:hash_assign",
+		"body": [
+			"{%- hash_assign ${1:my_variable[\"a\"][\"b\"]} -%}"
+		],
+		"description": "Allows to easily modify a Hash with a syntax same as assign tag."
 	},
 	"Liquid pOS Tags: include_form": {
 		"prefix": "{%:include_form",
@@ -1442,6 +1503,26 @@
 			"{%- endparse_json -%}"
 		],
 		"description": "used to generate hash from json."
+	},
+	"Liquid pOS Tags: print": {
+		"prefix": "{%:print",
+		"body": "{%- print ${1:variable} -%}",
+		"description": "Print variable, skipping any additional sanitization. It provides a way to display a variable which consists of both safe and unsafe html."
+	},
+	"Liquid pOS Tags: redirect_to": {
+		"prefix": "{%:redirect_to",
+		"body": "{%- redirect_to '${1:path or url}${2|' ,'\\, status: 301 |}-%}",
+		"description": "Redirects browser to target."
+	},
+	"Liquid pOS Tags: response_status": {
+		"prefix": "{%:response_status",
+		"body": "{%- response_status ${1|200,204,400|} -%}",
+		"description": "Allows you to set HTTP status for the response. Default 200."
+	},
+	"Liquid pOS Tags: return": {
+		"prefix": "{%:return",
+		"body": "{%- return ${1:variable} -%}",
+		"description": "Used inside a partial invoked by a function tag to return a variable"
 	},
 	"Liquid pOS Tags: session": {
 		"prefix": "{%:session",
@@ -1603,6 +1684,15 @@
 		"body": " reversed",
 		"description": "Liquid Theme Tag for loop reversed iteration"
 	},
+	"Liquid Theme Tags: Loops ifchanged": {
+		"prefix": " ifchanged",
+		"body": [
+			"ifchanged",
+			"\t$0",
+			"endifchanged"
+		],
+		"description": "The ifchanged tag is typically called inside a {% for %} loop because it executes a block of code but only outputs the result if this is the first time it was called or if the previous call had a different result."
+	},
 	"Liquid Theme Tags: Loops TableRow": {
 		"prefix": " tablerow",
 		"body": [
@@ -1646,6 +1736,32 @@
 		"description": "Liquid Theme Tag Include_form This tag should be used to render forms defined in marketplace_builder/form_configurations."
 	},
 
+	"Liquid Theme pOS Tags: log": {
+		"prefix": " log",
+		"body": "log ${1:any object to be printed}, type: '${2|error,info,debug|}'",
+		"description": "log Print any information to marketplace logs"
+	},
+	"Liquid Theme pOS Tags: print": {
+		"prefix": " print",
+		"body": "print ${1:variable}",
+		"description": "Print variable, skipping any additional sanitization. It provides a way to display a variable which consists of both safe and unsafe html."
+	},
+	"Liquid Theme pOS Tags: redirect_to": {
+		"prefix": " redirect_to",
+		"body": "redirect_to '${1:path or url}${2|' ,'\\, status: 301 |}",
+		"description": "Redirects browser to target."
+	},
+	"Liquid Theme pOS Tags: response_status": {
+		"prefix": " response_status",
+		"body": "response_status ${1|200,204,400|}",
+		"description": "Allows you to set HTTP status for the response. Default 200."
+	},
+	"Liquid Theme pOS Tags: return": {
+		"prefix": " return",
+		"body": "return ${1:variable}",
+		"description": "Used inside a partial invoked by a function tag to return a variable"
+	},
+	
 	// END LIQUID TAG THEME
 
 

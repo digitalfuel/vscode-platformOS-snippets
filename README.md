@@ -1,5 +1,5 @@
 # platformOS Snippets for VS Code
-This extension for Visual Studio Code adds snippets for Liquid, YAML, grahpQL, marketplace-kit terminal.
+This extension for Visual Studio Code adds snippets for Liquid, YAML, grahpQL, marketplace-kit terminal. Supports Liquid Theme Tag.
 
 Visual Studio Marketplace link: [https://marketplace.visualstudio.com/items?itemName=digitalfuel.vscode-platformOS-snippets](https://marketplace.visualstudio.com/items?itemName=digitalfuel.vscode-platformOS-snippets)
 
@@ -116,7 +116,8 @@ capture
 
 ### Theme Tag
 ```javascript
-include
+render
+include // deprecated
 includewith    // Theme Tag {% include %} with parameters
 includefor    // Theme Tag {% include %} with parameters
 raw

@@ -18,12 +18,12 @@
 		"prefix": "?:marketplace-kit:4:Enviroment",
 		"body": "marketplace-kit env add ${1:[environment] eg Staging,Production} --email ${2:[your email]} --url ${3:[https://yourMarketplaceURL.com]}",
 		"description": "To add your environment to a config file, run the env add command, and authenticate with your Partner Portal credentials"
-  },
-  "terminal marketplace-kit env list": {
-    "prefix": "?:marketplace-kit:5:EnvironmentsList",
-    "body": "marketplace-kit env list",
-    "description": "Lists all added environments."
-  },
+	},
+	"terminal marketplace-kit env list": {
+		"prefix": "?:marketplace-kit:5:EnvironmentsList",
+		"body": "marketplace-kit env list",
+		"description": "Lists all added environments."
+	},
 	"terminal marketplace-kit deploy": {
 		"prefix": "?:marketplace-kit:6:deploy",
 		"body": "marketplace-kit deploy ${0:[environment] eg Staging,Production}",
@@ -389,156 +389,182 @@
 
 
 
-	"Liquid Tag Comment": {
+	"Liquid: Comment": {
 		"prefix": "{%:comment",
 		"body": "{%- comment -%} $0 {%- endcomment -%}",
 		"description": "Comment"
 	},
+	"Liquid: Raw": {
+		"prefix": "{%:raw",
+		"body": "{%- raw -%}$1{%- endraw -%}",
+		"description": "Raw"
+	},
 
-	"Liquid Tag Var Assign": {
+
+	"Liquid Tags: Var Assign": {
 		"prefix": "{%:assign",
 		"body": "{%- assign ${1:my_varibale} = $2 -%}",
 		"description": "Assign variable"
 	},
-	"Liquid Tag Var Capture": {
+	"Liquid Tags: Var Capture": {
 		"prefix": "{%:capture",
 		"body": "{%- capture ${1:my_varibale} -%}$2{%- endcapture -%}",
 		"description": "Capture variable"
 	},
-	"Liquid Tag Var Increment": {
+	"Liquid Tags: Var Increment": {
 		"prefix": "{%:increment",
 		"body": "{%- increment $1 -%}",
 		"description": "increment variable"
 	},
-	"Liquid Tag Var Decrement": {
+	"Liquid Tags: Var Decrement": {
 		"prefix": "{%:decrement",
 		"body": "{%- decrement $1 -%}",
 		"description": "decrement variable"
 	},
 
-	"Liquid Tag Control flow If": {
+	"Liquid Tags: Flow Control If": {
 		"prefix": "{%:if",
 		"body": [
 			"{%- if $1 ${2|==,!=,<,>,<=,>=,contains|} $3 -%}",
-			"    $4",
+			"\t$4",
 			"{%- endif -%}"
 		],
 		"description": "If Logic"
 	},
-	"Liquid Tag Control flow Else": {
+	"Liquid Tags: Flow Control Else": {
 		"prefix": "{%:else",
 		"body": "{%- else -%}",
 		"description": "Else only"
 	},
-	"Liquid Tag Control flow Else If": {
+	"Liquid Tags: Flow Control Else If": {
 		"prefix": "{%:elsif",
 		"body": "{%- elsif $1 ${2|==,!=,<,>,<=,>=,contains|} $3 -%}",
 		"description": "ElseIf only"
 	},
-	"Liquid Tag Control flow If Else": {
+	"Liquid Tags: Flow Control If Else": {
 		"prefix": "{%:if:else",
 		"body": [
 			"{%- if $1 ${2|==,!=,<,>,<=,>=,contains|} $3 -%}",
-			"    $4",
+			"\t$4",
 			"{%- else -%}",
-			"    $5",
+			"\t$5",
 			"{%- endif -%}"
 		],
 		"description": "If | Else logic"
 	},
-	"Liquid Tag Control flow Case": {
+	"Liquid Tags: Flow Control Case": {
 		"prefix": "{%:case",
 		"body": [
 			"{%- case ${1:handle} -%}",
-			"    {% when $1 %}",
-			"        $2",
-			"{%- endif -%}"
+			"\t{% when $2 %}",
+			"\t\t$3",
+			"{%- endcase -%}"
 		],
 		"description": "Case/when logic"
 	},
-	"Liquid Tag Control flow When": {
+	"Liquid Tags: Flow Control When": {
 		"prefix": "{%:when",
 		"body": [
 			"{% when $1 %}",
-			"    $2"
+			"\t$2"
 		],
 		"description": "Case/when logic"
 	},
-	"Liquid Tag Control flow Unless": {
+	"Liquid Tags: Flow Control Unless": {
 		"prefix": "{%:unless",
 		"body": [
 			"{%- unless $1 ${2|==,!=,<,>,<=,>=,contains|} $3 -%}",
-			"    $3",
+			"\t$3",
 			"{%- endunless -%}"
 		],
 		"description": "Unless logic"
 	},
 
-	"Liquid Tag Iteration For": {
+	"Liquid Tags: Loops For": {
 		"prefix": "{%:for",
 		"body": [
 			"{%- for $1 in $2 -%}",
-			"    $3",
+			"\t$3",
 			"{%- endfor -%}"
 		],
 		"description": "For Loop iteration"
 	},
-	"Liquid Tag Iteration Cycle": {
+	"Liquid Tags: Loops Cycle": {
 		"prefix": "{%:cycle",
 		"body": "{%- cycle${1| , group|} ${2:Item 1}, ${0:Item 2} -%}",
 		"description": "Cycle iteration"
 	},
-	"Liquid Tag Iteration Break": {
+	"Liquid Tags: Loops Break": {
 		"prefix": "{%:break",
 		"body": "{%- break -%}",
 		"description": "for loop break iteration"
 	},
-	"Liquid Tag Iteration Continue": {
+	"Liquid Tags: Loops Continue": {
 		"prefix": "{%:continue",
 		"body": "{%- continue -%}",
 		"description": "for loop continue iteration"
 	},
-	"Liquid Tag Iteration Limit": {
+	"Liquid Tags: Loops Limit": {
 		"prefix": "{%:limit",
 		"body": "limit:$1",
 		"description": "for loop limit iteration"
 	},
-	"Liquid Tag Iteration Offset": {
+	"Liquid Tags: Loops Offset": {
 		"prefix": "{%:offset",
 		"body": "offset:$1",
 		"description": "for loop offset iteration"
 	},
-	"Liquid Tag Iteration Range": {
+	"Liquid Tags: Loops Range": {
 		"prefix": "{%:range",
 		"body": "($1..$2)",
 		"description": "for loop range iteration"
 	},
-	"Liquid Tag Iteration Reversed": {
+	"Liquid Tags: Loops Reversed": {
 		"prefix": "{%:reversed",
 		"body": " reversed",
 		"description": "for loop reversed iteration"
 	},
-	"Liquid Tag Iteration TableRow": {
+	"Liquid Tags: Loops TableRow": {
 		"prefix": "{%:tablerow",
 		"body": [
 			"<table>",
-			"    {%- tablerow $1 in $2 cols:$3 limit:$4 offset:$5 -%}",
-			"        $0",
-			"    {%- endtablerow -%}",
+			"\t{%- tablerow $1 in $2 cols:$3 limit:$4 offset:$5 -%}",
+			"\t\t$0",
+			"\t{%- endtablerow -%}",
 			"</table>"
 		],
 		"description": "tablerow iteration"
 	},
-	"Liquid Tag Iteration Columns": {
+	"Liquid Tags: Loops Columns": {
 		"prefix": "{%:cols",
 		"body": "cols:$0",
 		"description": "tablerow column only"
 	},
 
-	"Liquid Tag Raw": {
-		"prefix": "{%:raw",
-		"body": "{%- raw -%}$1{%- endraw -%}",
-		"description": "Raw"
+	"Liquid Tags: Render": {
+		"prefix": "{%:render",
+		"body": "{%- render '$1' -%}",
+		"description": "Render"
+	},
+	"Liquid Tags: Include": {
+		"prefix": "{%:include",
+		"body": "{%- include $1 -%}",
+		"description": "Include"
+	},
+	"Liquid Tags: Include With": {
+		"prefix": "{%:includewith",
+		"body": "{%- include $1 with $2 -%}",
+		"description": "Include a template with a local variable named the same as partial file name"
+	},
+	"Liquid Tags: Include For": {
+		"prefix": "{%:includefor",
+		"body": "{%- include $1 for $2 -%}",
+		"description": "Render partial for every item in the collection"
+	},
+	"Liquid Tags: Include Form": {
+		"prefix": "{%:include_form",
+		"body": "{%- include_form '${1:form_config Name}', resource_id: ${2:Resource id eg user.id}, parent_resource_id: '${3:Resource type eg custom_model_type}' -%}",
+		"description": "Include_form This tag should be used to render forms defined in marketplace_builder/form_configurations."
 	},
 
 
@@ -549,7 +575,7 @@
 	},
 	"Liquid Filter append": {
 		"prefix": "|:append",
-		"body": "| append",
+		"body": "| append: ${0:String or Variable}",
 		"description": "append Concatenates two strings and returns the concatenated value"
 	},
 	"Liquid Filter assign_to_hash_key": {
@@ -562,15 +588,10 @@
 		"body": "| at_least",
 		"description": "at_least Limits a number to a minimum value"
 	},
-	"Liquid Filter base64_decode": {
-		"prefix": "|:base64_decode",
-		"body": "| base64_decode",
-		"description": "base64_decode decode base64 encoded string"
-	},
-	"Liquid Filter base64_encode": {
-		"prefix": "|:base64_encode",
-		"body": "| base64_encode",
-		"description": "base64_encode creates a base64 encoded string"
+	"Liquid Filter at_most": {
+		"prefix": "|:at_most",
+		"body": "| at_most",
+		"description": "at_most Limits a number to a maximum value."
 	},
 	"Liquid Filter capitalize": {
 		"prefix": "|:capitalize",
@@ -581,11 +602,6 @@
 		"prefix": "|:ceil",
 		"body": "| ceil",
 		"description": "ceil Rounds the input up to the nearest whole number. Liquid tries to convert the input to a number before the filter is applied"
-	},
-	"Liquid Filter compact": {
-		"prefix": "|:compact",
-		"body": "| compact",
-		"description": "compact returns (Array<Object>) - array from which blank values are removed"
 	},
 	"Liquid Filter concat": {
 		"prefix": "|:concat",
@@ -842,6 +858,11 @@
 		"body": "| lstrip",
 		"description": "lstrip, Removes all whitespaces (tabs, spaces, and newlines) from the beginning of a string. The filter does not affect spaces between words."
 	},
+	"Liquid Filter map": {
+		"prefix": "|:map",
+		"body": "| map: ${0:method (String)}",
+		"description": "map - returns (Array<Object>) - array of objects obtained from the original array of objects (passed in as the object parameter) by calling the method 'method' on each object in the original array"
+	},
 	"Liquid Filter minus": {
 		"prefix": "|:minus",
 		"body": "| minus: ${0:Number}",
@@ -962,6 +983,28 @@
 		"body": "| uniq",
 		"description": "uniq, removes any duplicate elements in an array."
 	},
+	"Liquid Filter upcase": {
+		"prefix": "|:upcase",
+		"body": "| upcase",
+		"description": "upcase, makes each character in a string uppercase. It has no effect on strings which are already all uppercase."
+	},
+	"Liquid Filter url_decode": {
+		"prefix": "|:url_decode",
+		"body": "| url_decode",
+		"description": "url_decode, decodes a string that has been encoded as a URL or by url_encode."
+	},
+	"Liquid Filter url_encode": {
+		"prefix": "|:url_encode",
+		"body": "| url_encode",
+		"description": "url_encode, converts any URL-unsafe characters in a string into percent-encoded characters."
+	},
+
+
+	"Liquid Filter add_hash_key": {
+		"prefix": "|:add_hash_key",
+		"body": "| add_hash_key: '${1:key}' ${2:value object} ",
+		"description": "add_hash_key, returns hash"
+	},
 	"Liquid Filter add_to_array": {
 		"prefix": "|:add_to_array",
 		"body": "| add_to_array: ${0:object}",
@@ -987,6 +1030,21 @@
 		"body": "| asset_url",
 		"description": "asset_url - returns (String) - url to the physical file if existing, root asset url otherwise"
 	},
+	"Liquid Filter base64_decode": {
+		"prefix": "|:base64_decode",
+		"body": "| base64_decode",
+		"description": "base64_decode decode base64 encoded string"
+	},
+	"Liquid Filter base64_encode": {
+		"prefix": "|:base64_encode",
+		"body": "| base64_encode",
+		"description": "base64_encode creates a base64 encoded string"
+	},
+	"Liquid Filter compact": {
+		"prefix": "|:compact",
+		"body": "| compact",
+		"description": "compact returns (Array<Object>) - array from which blank values are removed"
+	},
 	"Liquid Filter compute_hmac": {
 		"prefix": "|:compute_hmac",
 		"body": "| compute_hmac: ${0:String - data, secret ,algorithm}",
@@ -996,6 +1054,11 @@
 		"prefix": "|:detect",
 		"body": "| detect: ${0:Hash eg field_name: value}",
 		"description": "detect - returns (Object) - with first object from collection that matches provided conditions."
+	},
+	"Liquid Filter dig": {
+		"prefix": "|:dig",
+		"body": "| dig: ${0:Hash, Array}",
+		"description": "dig - returns (Object) - digs into and retrieve data from json"
 	},
 	"Liquid Filter escape_javascript": {
 		"prefix": "|:escape_javascript",
@@ -1022,6 +1085,13 @@
 		"body": "| flatten: ${0:(Array<Array>)}",
 		"description": "flatten - returns (Array<Object>) - with objects"
 	},
+
+	"Liquid Filter format_number": {
+		"prefix": "|:format_number",
+		"body": "| format_number: precision: ${1:precision(integer)}, significant: ${2:significant()}, separator: '${3:separator}', delimiter: '${4:delimiter}', ${5|'strip_insignificant_zeros',''}",
+		"description": "format_number - returns (string)"
+	},
+	
 	"Liquid Filter group_by": {
 		"prefix": "|:group_by",
 		"body": "| group_by: ${0:method_name (String)}",
@@ -1091,11 +1161,6 @@
 		"prefix": "|:localize",
 		"body": "| localize: ${0:format (String)",
 		"description": "localize - returns (String, nil) - formatted representation of the passed in DateTime object"
-	},
-	"Liquid Filter map": {
-		"prefix": "|:map",
-		"body": "| map: ${0:method (String)}",
-		"description": "map - returns (Array<Object>) - array of objects obtained from the original array of objects (passed in as the object parameter) by calling the method 'method' on each object in the original array"
 	},
 	"Liquid Filter map_attributes": {
 		"prefix": "|:map_attributes",
@@ -1172,6 +1237,11 @@
 		"body": "| reject: ${0:conditions (Hash) eg field_name: value}",
 		"description": "reject - returns (Array<Object>) - with objects from collection that don't match provided conditions"
 	},
+	"Liquid Filter remove_hash_key": {
+		"prefix": "|:remove_hash_key",
+		"body": "| remove_hash_key: '${0:Key(String)}'",
+		"description": "remove_hash_key - returns (Object)"
+	},
 	"Liquid Filter rotate": {
 		"prefix": "|:rotate",
 		"body": "| rotate: ${0:count (Integer) default 1}",
@@ -1191,6 +1261,11 @@
 		"prefix": "|:sha1",
 		"body": "| sha1",
 		"description": "sha1 - returns (String) - SHA1 digest of the input object"
+	},
+	"Liquid Filter shuffle_array": {
+		"prefix": "|:shuffle_array",
+		"body": "| shuffle_array",
+		"description": "shuffle_array - returns (Array<Object)"
 	},
 	"Liquid Filter slugify": {
 		"prefix": "|:slugify",
@@ -1212,6 +1287,11 @@
 		"body": "| sum_array",
 		"description": "sum_array - returns (Numeric) - summarised value of array"
 	},
+	"Liquid Filter time_diff": {
+		"prefix": "|:time_diff",
+		"body": "| time_diff: start: ${1:(StringIntegerDateTime)}, finish ${2:(StringIntegerDateTime)}, unit: '${3:(String defaualt 'ms'}', precision: ${4:(Integer}",
+		"description": "time_diff - returns (Float)"
+	},
 	"Liquid Filter titleize": {
 		"prefix": "|:titleize",
 		"body": "| titleize",
@@ -1221,11 +1301,6 @@
 		"prefix": "|:to_date",
 		"body": "| to_date",
 		"description": "to_date - returns (Date) - a Date object obtained/parsed from the input object"
-	},
-	"Liquid Filter to_hash": {
-		"prefix": "|:to_hash",
-		"body": "| to_hash",
-		"description": "to_hash - returns (Hash) - Hash created based on JSON - DEPRICATED: USE | parse_json FILTER"
 	},
 	"Liquid Filter to_mobile_number": {
 		"prefix": "|:to_mobile_number",
@@ -1257,6 +1332,16 @@
 		"body": "| useragent",
 		"description": "useragent - (Hash) - parsed browser useragent information"
 	},
+	"Liquid Filter uuid": {
+		"prefix": "|:uuid",
+		"body": "| uuid",
+		"description": "uuid - returns (String)"
+	},	
+	"Liquid Filter verify_access_key": {
+		"prefix": "|:verify_access_key",
+		"body": "| verify_access_key",
+		"description": "verify_access_key - returns (Boolean) - eg {% assign access_key = '12345' %} {{ access_key | verify_access_key }} => true"
+	},	
 	"Liquid Filter video_params": {
 		"prefix": "|:video_params",
 		"body": "| video_params",
@@ -1289,81 +1374,262 @@
 		"body": "{{- ${0:length (Int) default '12' | random_string -}}",
 		"description": "random_string - returns (String) - returns a random alphanumeric string of given length;"
 	},
-	"Liquid Tag Page content_for": {
+
+	"Liquid pOS Tags: background": {
+		"prefix": "{%:background",
+		"body": "{%- background '${1:options hash}' -%}",
+		"description": "Invokes code within the tag asynchronously, in the background. You will only have access to variables you explicitly pass to the background tag."
+	},
+	"Liquid pOS Tags: cache": {
+		"prefix": "{%:cache",
+		"body": "{%- cache '${1:key}', expire: ${2:integer} -%}$3{% endcache %}",
+		"description": "Checks if there's html cached for the given key. If yes, it just returns the value without processing anything inside the cache tag, otherwise it executes code, stores the result in the cache."
+	},
+	"Liquid pOS Tags: content_for": {
 		"prefix": "{%:content_for",
 		"body": "{%- content_for '${1:Yield}' -%}$2{%- endcontent_for -%}",
 		"description": "Adds specified content to Layout"
 	},
-	"Liquid Tag execute_query": {
-		"prefix": "{%:execute_query",
-		"body": "{%- execute_query \"${1:query_name}\", result_name: \"${2:default g}\" -%}",
-		"description": "Use to execute defined graph query. Will raise an exception when query return errors."
-	},
-	"Liquid Tag export": {
+	"Liquid pOS Tags: export": {
 		"prefix": "{%:export",
 		"body": "{%- export ${1:variable_names}, namespace: '${2:namespace}' -%}",
 		"description": "Exports and makes avaiable variables from an include with local scope outside the partial. Used in conjunction with context.exports"
 	},
-	"Liquid Tag Form": {
+	"Liquid pOS Tags: form": {
 		"prefix": "{%:form",
 		"body": [
 			"{%- form html-id: '${1:someid}', html-novalidate: true, html-class: '${2:class}', html-data-user-id: '${3:someid}', html-multipart: false -%}",
-			"    {{ form_builder }}",
+			"\t{{ form_builder }}",
 			"{%- endform -%}"
 		],
 		"description": "used to generate a html form element for a resource. Use within form configuration. Inside the tag you can use form_builder variable."
 	},
-	"Liquid Tag parse_json": {
-		"prefix": "{%:parse_json",
-		"body": [
-			"{% parse_json ${1:variable} %}",
-			"  {",
-			"    'name': 'value'",
-			"  }",
-			"{%- endparse_json -%}"
-		],
-		"description": "used to generate hash from json."
+	"Liquid pOS Tags: graphql": {
+		"prefix": "{%:graphql",
+		"body": "{%- graphql \"${1:query_name}\", result_name: \"${2:default g}\" -%}",
+		"description": "execute GraphQL query stored in a file or invoke GraphQL query inline."
 	},
-	"Liquid Include": {
-		"prefix": "{%:include",
-		"body": "{%- include $1 -%}",
-		"description": "Include"
-	},
-	"Liquid Include With": {
-		"prefix": "{%:includewith",
-		"body": "{%- include $1 with $2 -%}",
-		"description": "Include a template with a local variable named the same as partial file name"
-	},
-	"Liquid Include For": {
-		"prefix": "{%:includefor",
-		"body": "{%- include $1 for $2 -%}",
-		"description": "Render partial for every item in the collection"
-	},
-	"Liquid Include Form": {
+	"Liquid pOS Tags: include_form": {
 		"prefix": "{%:include_form",
-		"body": "{%- include_form '${1:form_config Name}', resource_id: ${2:Resource id eg user.id}, parent_resource_id: '${3:Resource type eg custom_model_type}' -%}",
-		"description": "Include_form This tag should be used to render forms defined in marketplace_builder/form_configurations."
+		"body": [
+			"{%- include_form '${1:form_name}', id: ${2:resource id}, parent_resource_id: '${2:string}' -%}"
+		],
+		"description": "used to render forms defined in form_configurations directory."
 	},
-	"Liquid log": {
+	"Liquid pOS Tags: log": {
 		"prefix": "{%:log",
 		"body": "{%- log ${1:any object to be printed}, type: '${2|error,info,debug|}' -%}",
 		"description": "log Print any information to marketplace logs"
 	},
-	"Liquid query_graph": {
-		"prefix": "{%:query_graph",
-		"body": "{%- query_graph \"${1:query_name}\", result_name: \"${2:default g}\" -%}",
-		"description": "log Print any information to marketplace logs"
+	"Liquid pOS Tags: parse_json": {
+		"prefix": "{%:parse_json",
+		"body": [
+			"{% parse_json ${1:variable} %}",
+			"\t{",
+			"\t\t'name': 'value'",
+			"\t}",
+			"{%- endparse_json -%}"
+		],
+		"description": "used to generate hash from json."
 	},
-	"Liquid spam_protection": {
-		"prefix": "{%:spam_protection",
+	"Liquid pOS Tags: session": {
+		"prefix": "{%:session",
+		"body": "{%- session ${1:variable} = ${2:data} -%}",
+		"description": "stores data during user's session Sets field of given name to given value in context.session"
+	},
+	"Liquid pOS Tags: spam_protection default": {
+		"prefix": "{%:spam_protection_default",
 		"body": "{%- spam_protection -%}",
+		"description": "spam_protection Generates html for recaptcha_v2 spam protection"
+	},
+	"Liquid pOS Tags: spam_protection": {
+		"prefix": "{%:spam_protection",
+		"body": "{%- spam_protection \"${1:strategy}\", action: \"${2:action}\" -%}",
 		"description": "spam_protection Generates html for recaptcha spam protection"
 	},
-	"Liquid Tag layout yield": {
+	"Liquid pOS Tags: yield": {
 		"prefix": "{%:yield",
 		"body": "{%- yield '${0:Content_for name}' -%}",
 		"description": "yield Execute code wrapped inside content_for {% content_for 'content_for_name' %}"
 	},
+
+
+	// START LIQUID TAG THEME
+
+	"Liquid Theme: Comment": {
+		"prefix": " comment",
+		"body": [
+			"comment",
+			"---------------------------------",
+			"\t$0",
+			"---------------------------------",
+			"endcomment"
+		],
+		"description": "Liquid Theme Tag Comment"
+	},
+	
+	"Liquid Theme Tags: Theme Var Assign": {
+		"prefix": "assign",
+		"body": "assign ${1:my_varibale} = $2",
+		"description": "Liquid Theme Tag Assign variable"
+	},
+	"Liquid Theme Tags: Theme Var Increment": {
+		"prefix": " increment",
+		"body": "increment $1",
+		"description": "Liquid Theme Tag increment variable"
+	},
+	"Liquid Theme Tags: Theme Var Decrement": {
+		"prefix": " decrement",
+		"body": "decrement $1",
+		"description": "Liquid Theme Tag decrement variable"
+	},
+	
+	"Liquid Theme Tags: Flow Control If": {
+		"prefix": " if",
+		"body": [
+			"if $1 ${2|==,!=,<,>,<=,>=,contains|} $3",
+			"\t$4",
+			"endif"
+		],
+		"description": "Liquid Theme Tag If Logic"
+	},
+	"Liquid Theme Tags: Flow Control Else": {
+		"prefix": " else",
+		"body": "else",
+		"description": "Liquid Theme Tag Else only"
+	},
+	"Liquid Theme Tags: Flow Control Else If": {
+		"prefix": " elsif",
+		"body": "elsif $1 ${2|==,!=,<,>,<=,>=,contains|} $3",
+		"description": "Liquid Theme Tag ElseIf only"
+	},
+	"Liquid Theme Tags: Flow Control If Else": {
+		"prefix": " if:else",
+		"body": [
+			"if $1 ${2|==,!=,<,>,<=,>=,contains|} $3",
+			"\t$4",
+			"else",
+			"\t$5",
+			"endif"
+		],
+		"description": "Liquid Theme Tag If | Else logic"
+	},
+	"Liquid Theme Tags: Flow Control Case": {
+		"prefix": " case",
+		"body": [
+			"case ${1:handle}",
+			"\twhen $2",
+			"\t\t$3",
+			"endcase"
+		],
+		"description": "Liquid Theme Tag Case/when logic"
+	},
+	"Liquid Theme Tags: Flow Control When": {
+		"prefix": " when",
+		"body": [
+			"when $1",
+			"\t$2"
+		],
+		"description": "Liquid Theme Tag Case/when logic"
+	},
+	"Liquid Theme Tags: Flow Control Unless": {
+		"prefix": " unless",
+		"body": [
+			"unless $1 ${2|==,!=,<,>,<=,>=,contains|} $3",
+			"\t$3",
+			"endunless"
+		],
+		"description": "Liquid Theme Tag Unless logic"
+	},
+	
+	"Liquid Theme Tags: Loops For": {
+		"prefix": " for",
+		"body": [
+			"for $1 in $2",
+			"\t$3",
+			"endfor"
+		],
+		"description": "Liquid Theme Tag For Loop iteration"
+	},
+	"Liquid Theme Tags: Loops Cycle": {
+		"prefix": " cycle",
+		"body": "cycle${1| , group|} ${2:Item 1}, ${0:Item 2}",
+		"description": "Liquid Theme Tag Cycle iteration"
+	},
+	"Liquid Theme Tags: Loops Break": {
+		"prefix": " break",
+		"body": "break",
+		"description": "Liquid Theme Tag for loop break iteration"
+	},
+	"Liquid Theme Tags: Loops Continue": {
+		"prefix": " continue",
+		"body": "continue",
+		"description": "Liquid Theme Tag for loop continue iteration"
+	},
+	"Liquid Theme Tags: Loops Limit": {
+		"prefix": " limit",
+		"body": "limit:$1",
+		"description": "Liquid Theme Tag for loop limit iteration"
+	},
+	"Liquid Theme Tags: Loops Offset": {
+		"prefix": " offset",
+		"body": "offset:$1",
+		"description": "Liquid Theme Tag for loop offset iteration"
+	},
+	"Liquid Theme Tags: Loops Range": {
+		"prefix": " range",
+		"body": "($1..$2)",
+		"description": "Liquid Theme Tag for loop range iteration"
+	},
+	"Liquid Theme Tags: Loops Reversed": {
+		"prefix": " reversed",
+		"body": " reversed",
+		"description": "Liquid Theme Tag for loop reversed iteration"
+	},
+	"Liquid Theme Tags: Loops TableRow": {
+		"prefix": " tablerow",
+		"body": [
+			"<table>",
+			"\ttablerow $1 in $2 cols:$3 limit:$4 offset:$5",
+			"\t\t$0",
+			"\tendtablerow",
+			"</table>"
+		],
+		"description": "Liquid Theme Tag tablerow iteration"
+	},
+	"Liquid Theme Tags: Loops Columns": {
+		"prefix": " cols",
+		"body": "cols:$0",
+		"description": "Liquid Theme Tag tablerow column only"
+	},
+	
+	"Liquid Theme Tags: Render": {
+		"prefix": " render",
+		"body": "render '$1'",
+		"description": "Liquid Theme Tag Render"
+	},
+	"Liquid Theme Tags: Include": {
+		"prefix": " include",
+		"body": "include $1",
+		"description": "Liquid Theme Tag Include"
+	},
+	"Liquid Theme Tags: Include With": {
+		"prefix": " includewith",
+		"body": "include $1 with $2",
+		"description": "Liquid Theme Tag Include a template with a local variable named the same as partial file name"
+	},
+	"Liquid Theme Tags: Include For": {
+		"prefix": " includefor",
+		"body": "include $1 for $2",
+		"description": "Liquid Theme Tag Render partial for every item in the collection"
+	},
+	"Liquid Theme Tags: Include Form": {
+		"prefix": " include_form",
+		"body": "include_form '${1:form_config Name}', resource_id: ${2:Resource id eg user.id}, parent_resource_id: '${3:Resource type eg custom_model_type}'",
+		"description": "Liquid Theme Tag Include_form This tag should be used to render forms defined in marketplace_builder/form_configurations."
+	},
+
+	// END LIQUID TAG THEME
 
 
 
@@ -1371,21 +1637,21 @@
 		"prefix": "gql:search_page",
 		"body": [
 			"query search_page(",
-			"    $value: String",
+			"\t$value: String",
 			") {",
-			"    pages: pages(",
-			"        filter: {",
-			"            content: {",
-			"                contains: $value",
-			"            }",
-			"        }",
-			"    ) {",
-			"        total_entries",
-			"        results {",
-			"            slug",
-			"            content",
-			"        }",
-			"    }",
+			"\tpages: pages(",
+			"\t\tfilter: {",
+			"\t\t\tcontent: {",
+			"\t\t\t\tcontains: $value",
+			"\t\t\t}",
+			"\t\t}",
+			"\t) {",
+			"\t\ttotal_entries",
+			"\t\tresults {",
+			"\t\t\tslug",
+			"\t\t\tcontent",
+			"\t\t}",
+			"\t}",
 			"}"
 		],
 		"description": "GraphQL Search page content. Page needs to be marked as searchable: true. Search will work on rendered page version, so this page can't rely on any dynamic data."
@@ -1394,9 +1660,9 @@
 		"prefix": "gql:mutation:customizations_delete_all",
 		"body": [
 			"mutation delete_${1:Custom_model_types Name} {",
-			"  customizations_delete_all(custom_model_type_name: \"${2:Custom_model_types Name}\") {",
-			"    id",
-			"  }",
+			"\tcustomizations_delete_all(custom_model_type_name: \"${2:Custom_model_types Name}\") {",
+			"\t\tid",
+			"\t}",
 			"}"
 		],
 		"description": "GraphQL delete all of custom_model_types items."
@@ -1405,12 +1671,12 @@
 		"prefix": "gql:query:people",
 		"body": [
 			"query get_users {",
-			"  people {",
-			"    results {",
-			"      id",
-			"      email",
-			"    }",
-			"  }",
+			"\tpeople {",
+			"\t\tresults {",
+			"\t\t\tid",
+			"\t\t\temail",
+			"\t\t}",
+			"\t}",
 			"}"
 		],
 		"description": "GraphQL query all users (people)."

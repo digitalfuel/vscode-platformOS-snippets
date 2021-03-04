@@ -541,6 +541,17 @@
 		"description": "tablerow column only"
 	},
 
+	"Liquid Tags: liquid": {
+		"prefix": "{%:liquid",
+		"body": [
+			"{%- liquid",
+			"\t",
+			"\t$1",
+			"\t",
+			"-%}",
+		],
+		"description": "Render"
+	},
 	"Liquid Tags: Render": {
 		"prefix": "{%:render",
 		"body": "{%- render '$1' -%}",
